@@ -69,7 +69,7 @@
           <div class="upgrade-text">
             <p class="upgrade-title">UPGRADE TO PRO</p>
             <p class="upgrade-copy">
-              Unlock premium features, faster generations and unlimited creations
+              Unlock premium features, faster generations and unlimited creations, multimodal output, your own workspace
             </p>
           </div>
           <button class="btn btn-upgrade">Upgrade Now</button>
@@ -197,28 +197,33 @@
                 </button>
                 <button class="tab-btn" data-output="voiceover">
                   <span class="material-symbols-outlined">mic</span>
-                  <span>Voiceover</span>
+                  <span>VO</span>
                 </button>
               </div>
 
               <div class="output-preview">
+                 <audio id="realAudio" src="./assets/images/PICTURE-ALIVE-AI-SAMPLE-HISTORICAL-RESPONSE.mp3" preload="metadata"></audio>
                 <div class="preview-header">
                   <div class="mini-title">
                     <span class="material-symbols-outlined">graphic_eq</span>
-                    <strong>VOICEOVER PREVIEW</strong>
+                    <strong>HISTORICAL AUDIO GUIDE PREVIEW</strong>
                   </div>
-                  <span class="time-pill">00:00 / 00:45</span>
+                 <!-- ⏱️ Real-time dynamic text display -->
+    				       <span class="time-pill" id="timeDisplay">00:00 / --:--</span>
                 </div>
                 <div class="audio-row">
                   <button class="audio-play" id="audioPlayToggle">
-                    <span class="material-symbols-outlined">play_arrow</span>
+                    <span class="material-symbols-outlined" id="playIcon">play_arrow</span>
                   </button>
-                  <div class="audio-track">
-                    <span class="audio-progress"></span>
-                  </div>
+                 <div class="audio-track" id="trackTimeline" style="cursor: pointer; position: relative;">
+      					     <span class="audio-progress" id="audioProgressBar" style="width: 0%; display: block; height: 100%;"></span>
+   				        </div>
                   <div class="audio-tools">
                     <span class="lang-chip">EN-US</span>
-                    <span class="material-symbols-outlined">download</span>
+                    <!-- Downloader operational button link -->
+                    <button class="download-btn" id="audioDownloadTrigger" style="background: none; border: none; cursor: pointer; color: inherit; padding: 0;">
+                        <span class="material-symbols-outlined">download</span>
+                    </button>
                   </div>
                 </div>
               </div>
