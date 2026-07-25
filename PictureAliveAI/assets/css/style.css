@@ -57,6 +57,9 @@ button {
   padding: 24px 14px;
   background: rgba(28, 27, 27, 0.9);
   border-right: 1px solid var(--line);
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh);
   backdrop-filter: blur(18px);
 }
 
@@ -64,7 +67,7 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 0 8px 12px;
+  padding: 0 5px 5px;
 }
 
 .brand-logo {
