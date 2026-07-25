@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ── Fireworks AI ──────────────────────────────────────────────
-FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY", "fw_zsjMRtGv8uJ67U2uLJDCC")
+FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY", "")
 FIREWORKS_BASE_URL = "https://api.fireworks.ai/inference/v1/chat/completions"
 
 # Vision model (image analysis)
