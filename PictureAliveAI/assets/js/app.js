@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const navItems = document.querySelectorAll('[data-nav-item]');
+  const helpBtn = document.getElementById('helpEmailTrigger');
+  
   navItems.forEach((item) => {
     item.addEventListener('click', () => {
       navItems.forEach((nav) => nav.classList.remove('active'));
@@ -37,4 +39,31 @@ document.addEventListener('DOMContentLoaded', () => {
       toast.classList.remove('show');
     }, 1800);
   }
+
+  
+  if (helpBtn) {
+    helpBtn.addEventListener('click', (event) => {
+      // Prevent any parent links or bubble events from disrupting the script
+      event.preventDefault();
+
+      const emailTo = 'poppenspeladvies@gmail.com';
+      const subjectText = 'Support Request - PICTURE ALIVE AI';
+      const mailtoUrl = `mailto:${emailTo}?subject=${encodeURIComponent(subjectText)}`;
+      
+      // 🛠️ The Working Frame Isolation Engine
+      let mailFrame = document.getElementById('hiddenMailFrame');
+      if (!mailFrame) {
+        mailFrame = document.createElement('iframe');
+        mailFrame.id = 'hiddenMailFrame';
+        mailFrame.style.display = 'none';
+        document.body.appendChild(mailFrame);
+      }
+      
+      // Inject the URL string into the frame sandbox to launch the window safely
+      mailFrame.src = mailtoUrl;
+     // console.log("✅ Frame-isolated email window triggered successfully.");
+      showToast(`Email to Picture Alive AI Support Team`);
+    });
+  }
+  
 });
