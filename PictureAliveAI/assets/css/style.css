@@ -13,6 +13,7 @@
   --muted: #9f9f9f;
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
   --radius: 18px;
+  --black: rgba(0, 0, 0, 0.82);
 }
 
 * {
@@ -381,6 +382,7 @@ button {
   grid-row: 2;
   overflow-y: auto;
   overflow-x: hidden;
+  background: var(--black);
   padding: 20px;
   height: calc(100vh - 84px);
 }
@@ -415,7 +417,25 @@ button {
 }
 
 .panel-body {
+  /* 🎛️ Metallic black, dark iron, silver, and subtle pink luster gradient */
+  background: linear-gradient(
+    135deg, 
+    #0c0c0c 0%,    /* Rich true black */
+    #2a2a2a 45%,   /* Industrial gunmetal iron */
+    #c0c0c0 85%,   /* Reflective bright silver */
+    #e0aaff 100%   /* High-shine metallic pale pink highlight */
+  );
   padding: 18px;
+  border-radius: 12px;
+  
+  /* ⚡ Cyberpunk Neon Glow: Multi-layered bleeding of hot pink and laser red */
+  box-shadow: 
+    0 0 10px rgba(255, 0, 128, 0.5),  /* Hot Pink core rim for high intensity */
+    0 0 25px rgba(255, 0, 0, 0.35),   /* Pure Laser Red medium ambient aura spread */
+    0 0 55px rgba(255, 0, 128, 0.2);  /* Soft Magenta/Pink outer background dispersal */
+    
+  /* Subtle frame border using a transparent hot pink accent line */
+  border: 1px solid rgba(255, 0, 128, 0.25); 
 }
 
 .preview-stage {
@@ -423,7 +443,7 @@ button {
   overflow: hidden;
   border-radius: 18px;
   border: 1px solid var(--line);
-  background: #000;
+  background: rgb(255, 0, 0);
   aspect-ratio: 16 / 9;
 }
 
