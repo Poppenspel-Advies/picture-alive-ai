@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- This tag adds your PNG logo to the browser tab -->
+    <link rel="icon" type="image/png" href="/assets/images/PictureAliveAILogo_resize_old.png">
     <title>PICTURE ALIVE AI | Beyond Imagination</title>
     <meta
       name="description"
@@ -82,7 +84,7 @@
           <button class="circle-btn" id="helpEmailTrigger" aria-label="Help">
             <span class="material-symbols-outlined">help</span>
           </button>
-          <button class="circle-btn" aria-label="Exit">
+          <button class="circle-btn" id="uiLogoutTrigger" aria-label="Exit">
             <span class="material-symbols-outlined">logout</span>
           </button>
         </div>
@@ -112,17 +114,34 @@
               </div>
             </div>
 
-            <div class="profile-pill">
+          <!-- State A: Standard Secure Google Sign-In Button (Visible until authenticated) -->
+			  <div id="googleSignInBtn"></div>
+            
+            <div class="profile-pill" id="userProfilePill">
               <div class="profile-copy">
-                <p>Arpita Robert</p>
-                <span>Team Innovators</span>
+                <p id="profileName">Arpita Robert</p>
+                <span id="profileTeam">Team Innovators</span>
               </div>
-              <div class="avatar-wrap">
-                <img
+              <!-- 🎯 Clickable Avatar Outer Box Frame -->
+              <div class="avatar-wrap" id="avatarLoginTrigger" title="Sign in with Google">
+                <img id="profileAvatar"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtBpV71QtTo17hmuGO2wIHqo62c3izFoKE5XQuFilvfhvJ3XWvENNbR_xv24kR1qb4eJXyQaunacmYW7byLNltRAaI-lPVbtFRnt3TTubuS59iuGGbC6xsypQoYVynfEsYnuLkFv_JDOu-_CfeidHGdkvJRGSIhTpoiP_ZoOyaOpDaVqHN_ns6AQhPTJiRA_NudBKFlYVfodU4ZzeokFuBHyiWsVVQYlKP60yf1bCG10Ma7iHSJh_p"
                   alt="Profile avatar"
                 />
               </div>
+              <!-- 🎯 The Fix Layer: Google renders its secure button directly inside here -->
+    			    <div id="googleAuthOverlay" 
+    			    title="Sign in with Google" 
+    			    style="
+    			        position: absolute;
+    			        top: 0;
+    			        left: 0;
+    			        width: 100%;
+    			        height: 100%;
+    			        opacity: 0.01; /* Makes Google's button completely transparent but clickable */
+    			        cursor: pointer;
+    			        z-index: 999;
+    			    "></div>
               <span class="notif-badge">1</span>
             </div>
           </div>
@@ -362,6 +381,7 @@
 
     <div class="toast" id="toast"></div>
 
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/upload.js"></script>
     <script src="assets/js/player.js"></script>
