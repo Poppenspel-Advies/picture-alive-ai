@@ -2,6 +2,9 @@
 
 Premium cinematic multimodal UI prototype for Picture Alive AI.
 
+<img width="2061" height="763" alt="PICTURE_ALIVE_AI_COVER_IMAGE_RESIZE" src="https://github.com/user-attachments/assets/39aba44f-91ee-4d7a-9104-96ce1dacb392" />
+
+
 ## Project structure
 
 - `index.html` — main dashboard layout
