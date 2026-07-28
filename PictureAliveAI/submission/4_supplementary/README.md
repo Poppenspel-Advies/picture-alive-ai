@@ -1,4 +1,4 @@
-# Supplementary Materials - POSTER
+# Supplementary Materials - POSTER & BANNER
 
 🌟 Why Picture Alive AI Stands Out
 
