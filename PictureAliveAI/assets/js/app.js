@@ -49,7 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     tab.addEventListener('click', () => {
       tabs.forEach((btn) => btn.classList.remove('active'));
       tab.classList.add('active');
-      showToast(`${tab.dataset.output.toUpperCase()} mode selected`);
+      const currentMode = tab.dataset.output.toUpperCase();
+		if (currentMode !== "AUDIO") {
+		  showToast(`${currentMode} mode, Upgrade to PRO`);
+		}
     });
   });
 
