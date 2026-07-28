@@ -59,7 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-action]').forEach((button) => {
     button.addEventListener('click', () => {
       const action = button.dataset.action;
-      showToast(`${action.charAt(0).toUpperCase() + action.slice(1)} started`);
+       if ((action && action.toLowerCase() === "convert") || (action && action.toLowerCase() === "edit") ) {
+		  showToast(`${action.charAt(0).toUpperCase() + action.slice(1)}:: Upgrade to PRO`);
+		  }else {
+         showToast(`${action.charAt(0).toUpperCase() + action.slice(1)} started`);
+      }
     });
   });
 
