@@ -68,6 +68,7 @@ This unified design reduces complexity while expanding what users can achieve fr
 -----------------------------------------------------------------------------------------------------------------------
 
 💡 Five Integrated Capabilities
+
 🖼 1. Intelligent Image Understanding
 
 The platform begins by analysing the uploaded image using advanced vision-language AI.
