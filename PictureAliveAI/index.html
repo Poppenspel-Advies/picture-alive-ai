@@ -235,29 +235,103 @@
                   </div>
                 </div>
               </div>
+				<!-- 🎯 NEW: Interactive Brand Card Footer to fill the empty space beautifully -->
+				    <div class="brand-footer-card">
+				      <div class="brand-header-group">
+				        <div class="brand-title-wrap">
+				          <span class="material-symbols-outlined brand-logo-icon">auto_awesome</span>
+				          <h4>PICTURE ALIVE AI</h4>
+				        </div>
+				        <span class="status-indicator">SECURE CLIENT ENGINE</span>
+				      </div>
+				      
+				      <p class="brand-description">
+				        Transforming static historical assets into immersive cinematic audio tracks, high-fidelity scripts, and live interactive video modules automatically.
+				      </p>
+				      
+				      <!-- Graphic tracking data metrics row -->
+				      <div class="brand-stats-row">
+				        <div class="stat-node">
+				          <span class="stat-value">4K UHD</span>
+				          <span class="stat-label">Output Array</span>
+				        </div>
+				        <div class="stat-node">
+				          <span class="stat-value">60 FPS</span>
+				          <span class="stat-label">Render Flow</span>
+				        </div>
+				        <div class="stat-node">
+				          <span class="stat-value" style="color: #ff007f; text-shadow: 0 0 8px rgba(255, 0, 127, 0.5);">PRO</span>
+    					  <span class="stat-label">Active License</span>
+				        </div>
+				      </div>
+    				</div>
+
             </div>
 
-            <div class="glass-card story-card">
-              <div class="story-head">
-                <h3>Story Generated</h3>
-                <span class="material-symbols-outlined">auto_awesome</span>
-              </div>
-              <p>
-                In the year 2050, classrooms are no longer confined by physical
-                walls. AI-powered teachers deliver personalized learning through
-                immersive holographic experiences, making education accessible,
-                engaging, and fun for everyone regardless of their location...
-              </p>
-              <button class="story-link">Read Full Story</button>
-              <div class="model-row">
-                <div class="model-avatars">
-                  <span>AI</span>
-                  <span>L</span>
-                  <span>V</span>
-                </div>
-                <small>Models used: LLM-Alpha, Vision-Pro, Audio-Gen</small>
-              </div>
-            </div>
+                      <!-- Dynamic Content Workspace Container wrapper -->
+  <div class="studio-wrapper">
+
+    <!-- 🔴 STATE 1: CYBERPUNK UPLOADER & GENERATE TRIGGER WORKSPACE -->
+    <div id="uploaderStateWorkspace" class="cyber-upload-card">
+      <div class="glow-perimeter"></div>
+      
+      <h2 id="mainUploadHeader">UPLOAD YOUR IMAGE</h2>
+      
+      <!-- Interactive drag and drop region canvas boundary box -->
+      <div class="drop-zone-area" id="dropZoneArea">
+        <div class="neon-cloud-box">
+          <span class="material-symbols-outlined cloud-icon">cloud</span>
+          <span class="material-symbols-outlined arrow-icon">upload</span>
+        </div>
+        <p class="primary-drag-text">Drag & Drop your image here</p>
+        <div class="text-separator-line"><span>or</span></div>
+        
+        <!-- Native file selector execution wrapper trigger -->
+        <label class="custom-file-trigger-btn">
+          <span class="material-symbols-outlined">upload_file</span> Upload Image
+          <input type="file" id="hiddenFileInput" accept=".jpg,.jpeg,.png,.webp" style="display: none;">
+        </label>
+        
+        <!-- File Format Restrictions Meta Label -->
+        <p class="format-support-caption">Supports: JPG, PNG, WEBP (Max 20MB)</p>
+      </div>
+
+      <!-- Core Generation Action Pipeline Switch -->
+      <button class="action-generate-btn" id="executeGenerationTrigger" disabled>
+        <span class="material-symbols-outlined">bolt</span> GENERATE AI STORY
+      </button>
+    </div>
+
+
+    <!-- 🌸 STATE 2: LIVE GENERATED STORY OUTPUT VIEW COMPONENT PANEL -->
+    <div id="storyOutputStateWorkspace" class="glass-card story-card" style="display: none;">
+      <div class="story-head">
+        <h3>Story Generated</h3>
+        <span class="material-symbols-outlined">auto_awesome</span>
+      </div>
+      <p id="dynamicStoryTextContent">
+        In the year 2050, classrooms are no longer confined by physical
+        walls. AI-powered teachers deliver personalized learning through
+        immersive holographic experiences, making education accessible,
+        engaging, and fun for everyone regardless of their location...
+      </p>
+      <button class="story-link">Read Full Story</button>
+      <div class="model-row">
+        <div class="model-avatars">
+          <span>AI</span>
+          <span>L</span>
+          <span>V</span>
+        </div>
+        <small>Models used: LLM-Alpha, Vision-Pro, Audio-Gen</small> 
+      </div>
+      
+             <!-- Return workspace switch toggle helper button link node -->
+		      <button class="reset-back-btn" id="revertToUploadBtn">
+		        <span class="material-symbols-outlined">arrow_back</span> Upload New Asset
+		      </button>
+		    </div>
+		
+		  </div>
           </div>
 
           <footer class="footer-tagline">
