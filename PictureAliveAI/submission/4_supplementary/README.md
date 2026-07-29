@@ -1,6 +1,6 @@
 # Supplementary Materials - POSTER & BANNER
 
-🌟 Why Picture Alive AI Stands Out
+🌟 Why 'Picture Alive AI - Beyond Immagination" Stands Out
 
 Picture Alive AI™ was born from a simple observation and a motive to save tourist extra expenses for Audio Guide, to create an alive life for blind people to make light enter their life like a blooming of a new bud, to make a student smile from their regular homework to a audio/visionary lesson, to create a project content instantly , to make a Kangaroo alive anywhere and everywhere in this whole world, to have the cinematic story telling experience for the user who just live and die for their busy daily life to keep everyone happy beside him/her. Picture Alive AI talks life is not about just a potential growth, running for money, wait for the help, get bore with regular educational process, rather - life is being innovative, get the help by yourself, make education alive with audio and video, create your first story telling audio/video in cinematic way, live for your passion of wildlife photography, love the wild life and it's beauty, create your own digital world, let you understand the future of NASA Product in digital, save the audio guide extra money for your favourite French Wine in Paris with a view of Eiffel Tower with your love one, and finally - "Every Picture Has a Story. Let AI Bring It To Life with Picture ALIVE AI." - LIVE FOR LIFE, LET PICTURE ALIVE AI GET THE LIFE IN YOU. IT IS YOUR MOMENT, YOUR LIFE, LIVE THE LIFE WITH  PICTURE ALIVE AI - One Picture At A Time.
 
