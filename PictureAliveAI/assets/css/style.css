@@ -14,6 +14,13 @@
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
   --radius: 18px;
   --black: rgba(0, 0, 0, 0.82);
+   --neon-red: #ff1744;
+  --neon-red-glow: rgba(255, 23, 68, 0.4);
+  --neon-blue: #00e5ff;
+  --neon-blue-glow: rgba(0, 229, 255, 0.25);
+  --metallic-silver: #c0c0c0;
+  --deep-charcoal: #0a0a0c;
+  --glass-tint: rgba(255, 255, 255, 0.03);
 }
 
 * {
@@ -27,6 +34,8 @@ body {
   transform: scale(0.9);
   transform-origin: top center; 
   display: flex;
+  justify-content: center;
+  align-items: center;
   background:
     radial-gradient(circle at top left, rgba(255, 23, 68, 0.18), transparent 28%),
     linear-gradient(135deg, #0a0a0a 0%, #111111 55%, #060606 100%);
@@ -159,10 +168,13 @@ button {
 .sidebar-card,
 .glass-card,
 .right-panel {
-  background: var(--card);
-  border: 1px solid rgba(42, 42, 42, 0.8);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  background: rgba(15, 15, 20, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 .sidebar-card {
@@ -916,3 +928,631 @@ button {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+.studio-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+/* ==========================================
+   2. State A: Premium Neon Uploader Component
+   ========================================== */
+.cyber-upload-card {
+  position: relative;
+  padding: 32px;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 16px;
+  box-sizing: border-box;
+  
+  /* 🟥 1. Outer Perimeter Border: Laser-red frame outline line */
+  border: 2px solid #ff1744;
+  
+  /* 🎨 2. Background: Animated right-to-left metallic dark iron, silver-soft, and charcoal mesh layout */
+  background: linear-gradient(270deg, #09090b 0%, #1a1a24 35%, #3a3a4a 50%, #121216 75%, #050507 100%);
+  background-size: 200% 100%;
+  
+  /* 🔄 3. Multi-Animation Engine: Loops the background shift AND the neon border breathing pulse simultaneously */
+  animation: 
+    flowPinkRightToLeft 8s linear infinite,          /* Slow premium background flow */
+    cyberBorderPulse 3s ease-in-out infinite alternate; /* Outer background light blast glow */
+
+}
+
+/* Cyber ambient backdrop illumination */
+.cyber-upload-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  
+  /* Projects a high-fidelity cyan/blue and red ambient spotlight gradient from deep inside the panel */
+  background: radial-gradient(circle at center, rgba(0, 229, 255, 0.05) 0%, rgba(255, 23, 68, 0.03) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cyber-upload-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.cyber-upload-card h2 {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin: 0 0 24px 0;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Interactive drop region styling grid layout */
+.drop-zone-area {
+  position: relative;
+  overflow: hidden;
+  border: 1px dashed rgba(255, 23, 68, 0.4);
+  border-radius: 12px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* 🎯 THE FIX: Changed color values to deep red (#ff1744) inside the gradients */
+  background-image: 
+    linear-gradient(270deg, #ff1744 0%, rgba(255, 23, 68, 0.15) 20%, #121216 75%, #09090b 100%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  
+  background-size: 200% 100%, 16px 16px, 16px 16px;
+  background-position: 0 0, center center, center center;
+  
+  /* 🔄 SUCCESS: Still using your exact 'flowPinkRightToLeft' keyframes, but animating red colors */
+  animation: flowPinkRightToLeft 5s linear infinite;
+
+  box-shadow: 
+    0 0 15px rgba(255, 23, 68, 0.15),
+    inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Force inner text nodes, cloud vectors, and button groups to float safely over the backlight layer */
+.drop-zone-area * {
+  position: relative;
+  z-index: 2;
+}
+
+/* 🎯 THE FIX: Neon Red Scanline Ripple Layer */
+.drop-zone-area::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  
+  /* 🎛️ Sizing the horizontal light bar beam */
+  height: 4px; 
+  
+  /* 🟥 Laser light mesh: Bright white center core fading out into vivid neon red wings */
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 23, 68, 0.2) 20%, 
+    #ff1744 50%, 
+    rgba(255, 23, 68, 0.2) 80%, 
+    transparent 100%
+  );
+  
+  /* Ambient glowing aura radiating from the line */
+  box-shadow: 0 0 12px #ff1744, 0 0 25px rgba(255, 23, 68, 0.6);
+  opacity: 0.75;
+  
+  /* 🔄 Animation Engine: Moves the laser down from top to bottom continuously */
+  animation: neonScanlineVertical 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none; /* Prevents the laser element from intercepting mouse drops */
+  z-index: 3; /* Places it cleanly above your background color matrix layers */
+}
+
+
+.drop-zone-area.drag-over {
+  border-color: #00e5ff;
+  background: linear-gradient(270deg, #00e5ff 0%, rgba(0, 229, 255, 0.1) 30%, #09090b 100%);
+  background-size: 200% 100%;
+  box-shadow: 
+    0 0 25px rgba(0, 229, 255, 0.35),
+    inset 0 0 15px rgba(0, 229, 255, 0.1);
+  animation-duration: 2.5s; /* Accelerates fluid sweep speeds when active file hovers */
+}
+
+/* ☁️ Cloud & Arrow Layered Neon Box Vector Components */
+.neon-cloud-box {
+  position: relative;
+  width: 70px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.neon-cloud-box .cloud-icon {
+  font-size: 64px;
+  color: #00e5ff;
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.65));
+  position: absolute;
+  top: -12px; 
+  left: 3px;
+}
+
+.neon-cloud-box .arrow-icon {
+  font-size: 24px;
+  color: #ff1744;
+  filter: drop-shadow(0 0 8px rgba(255, 23, 68, 0.8));
+  position: absolute;
+  top: 10px; 
+  left: 23px;
+  font-weight: 800;
+}
+
+.primary-drag-text {
+  font-size: 14px;
+  color: #cccccc;
+  margin: 0 0 12px 0;
+}
+
+.text-separator-line {
+  position: relative;
+  width: 60%;
+  text-align: center;
+  margin: 12px 0;
+}
+
+.text-separator-line::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 0; width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
+
+.text-separator-line span {
+  position: relative;
+  background: #0d0d11;
+  padding: 0 8px;
+  font-size: 12px;
+  color: #666677;
+}
+
+/* Upload Action Trigger Elements */
+.custom-file-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(146, 0, 33, 0.9), rgba(255, 23, 68, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 23, 68, 0.3);
+}
+
+.custom-file-trigger-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 15px rgba(255, 23, 68, 0.6);
+}
+
+.format-support-caption {
+  font-size: 11px;
+  color: #666677;
+  margin: 16px 0 0 0;
+}
+
+/* Primary Execution Generator Module Trigger Box */
+.action-generate-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  
+   /* 🎯 Swapped color values to deep red (#ff1744) */
+  background: linear-gradient(270deg, #ff1744 0%, #ff1744 25%, #121216 75%, #09090b 100%);
+  background-size: 200% 100%;
+  
+  /* 🔄 Using your exact animation name */
+  animation: flowPinkRightToLeft 4s linear infinite; 
+  
+  /* 🎛️ Layer 1: Base Border with a permanent subtle neon pink light ring */
+  border: 1px solid rgba(255, 0, 127, 0.45);
+  
+  /* 🎨 Layer 2: Core right-to-left background gradient structure (fading pink to deep charcoal) */
+  background: linear-gradient(270deg, #ff007f 0%, #ff007f 25%, #121216 75%, #09090b 100%);
+  background-size: 200% 100%;
+  
+  /* Injects a crisp ambient glow around the button edge natively */
+  box-shadow: 0 0 12px rgba(255, 0, 127, 0.15), inset 0 0 8px rgba(255, 0, 127, 0.1);
+  
+  /* 🔄 Animation Engine: Pulls the background layout and shadow continuously from right to left */
+  animation: flowPinkRightToLeft 4s linear infinite;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+/* ✂️ Text Masking: Clips the flowing color wave directly into the text characters and icon silhouette */
+.action-generate-btn span,
+.action-generate-btn {
+  /* This ensures the inner text shares the exact same horizontal color wave positions */
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  /* 🎯 Swapped text wave middle highlight to red (#ff1744) */
+  background: linear-gradient(270deg, #ffffff 0%, #ff1744 40%, #00e5ff 80%, #ffffff 100%);
+  background-size: 200% auto;
+  
+  /* 🔄 Using your exact animation name */
+  animation: flowPinkRightToLeft 4s linear infinite; 
+}
+
+.action-generate-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  border-color: #ff007f;
+  /* Intensifies the neon light bleed out into the background canvas matrix */
+  box-shadow: 
+    0 0 20px rgba(255, 0, 127, 0.5), 
+    0 0 40px rgba(255, 0, 127, 0.25),
+    inset 0 0 12px rgba(255, 0, 127, 0.3);
+  
+  /* Speeds up the animation slightly when hovered to feel responsive */
+  animation-duration: 2s; 
+}
+
+.action-generate-btn:disabled {
+   background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  animation: none !important;
+}
+
+.action-generate-btn:disabled span,
+.action-generate-btn:disabled {
+  -webkit-text-fill-color: #3a3a4a !important;
+  color: #3a3a4a !important;
+  background: none !important;
+}
+
+
+.story-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.story-head h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.story-head span {
+  color: var(--neon-blue);
+  text-shadow: 0 0 8px var(--neon-blue-glow);
+}
+
+.story-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddddff;
+  margin-bottom: 20px;
+}
+
+.story-link {
+  background: transparent;
+  border: none;
+  color: var(--neon-red);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-size: 13px;
+  margin-bottom: 24px;
+  transition: color 0.2s ease;
+}
+
+.story-link:hover {
+  color: #ff5274;
+  text-decoration: underline;
+}
+
+.model-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
+}
+
+.model-avatars {
+  display: flex;
+}
+
+.model-avatars span {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #252530;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: bold;
+  margin-left: -6px;
+  border: 2px solid #0f0f14;
+}
+
+.model-avatars span:first-child { margin-left: 0; background: var(--neon-red); }
+.model-avatars span:nth-child(2) { background: var(--neon-blue); color: #000; }
+
+.model-row small {
+  color: #8888aa;
+  font-size: 11px;
+}
+
+.reset-back-btn {
+  width: 100%;
+  margin-top: 24px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #aaaaaa;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.reset-back-btn:hover {
+  background: rgba(255,255,255,0.03);
+  color: #ffffff;
+}
+
+/* Global Keyframe Utility Animations bottom of file location */
+@keyframes flowPinkRightToLeft {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ==========================================================================
+   CORE MOTION KEYFRAME LOOPS (Keep grouped at the very bottom of style.css)
+   ========================================================================== */
+@keyframes flowPinkRightToLeft {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%; /* Slides color vectors seamlessly horizontally */
+  }
+}
+
+/* ==========================================================================
+   1. MAIN HEADER: Silver, Red, and Blue Multi-Layered Light Radiation
+   ========================================================================== */
+#mainUploadHeader {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 0 0 28px 0;
+  text-transform: uppercase;
+  text-align: center;
+  
+  /* Pure metallic silver text color base */
+  color: #e0e0e0;
+  
+  /* 🎯 Multi-Layered Light Dispersion: Radiates sharp Silver, intense Red, and neon Blue aura rings simultaneously */
+  text-shadow: 
+    0 0 6px #ffffff,                  /* Core sharp silver brilliance */
+    0 0 15px rgba(255, 23, 68, 0.8),  /* Middle layer volcanic red burst */
+    0 0 30px rgba(0, 229, 255, 0.6);  /* Outer wide dispersion neon blue halo */
+}
+
+/* ==========================================================================
+   ⚡ VERTICAL NEON SCANNING KEYFRAME (Place at the bottom of style.css)
+   ========================================================================== */
+@keyframes neonScanlineVertical {
+  0% {
+    top: -5%; /* Start slightly above the top frame edge */
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.85; /* Fade in quickly as it enters the drop box */
+  }
+  95% {
+    opacity: 0.85; /* Stay brightly lit during the descent sweep */
+  }
+  100% {
+    top: 105%; /* Exit smoothly past the bottom layout line */
+    opacity: 0;  /* Dissolve invisible before looping back up */
+  }
+}
+
+
+/* ==========================================================================
+   ⚡ OUTSIDE BOX NEON BORDER LIGHT BREATHING LOOPS (Place at bottom of style.css)
+   ========================================================================== */
+@keyframes cyberBorderPulse {
+  0% {
+    /* Subtle core rim glow */
+    box-shadow: 
+      0 0 15px rgba(255, 23, 68, 0.3),
+      inset 0 0 15px rgba(0, 0, 0, 0.8);
+    border-color: #d50000; /* Darker red baseline */
+  }
+  100% {
+    /* High-intensity wide dispersion laser red light emission blast */
+    box-shadow: 
+      0 0 35px rgba(255, 23, 68, 0.65),
+      0 0 70px rgba(255, 23, 68, 0.25),
+      inset 0 0 25px rgba(255, 23, 68, 0.2);
+    border-color: #ff1744; /* Bright radioactive neon red filament */
+  }
+}
+
+
+/*--------------------------------------------------------------*/
+
+/* ==========================================================================
+   INTERACTIVE BRAND CARD: Technical Grid Canvas with Pulsing Laser Rings
+   ========================================================================== */
+.brand-footer-card {
+  position: relative;
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+  
+  /* 🟥 1. Outer perimeter red tracking laser border outline */
+  border: 1px solid rgba(255, 23, 68, 0.35);
+  
+  /* 🎨 2. Background: High-end metallic charcoal and dark slate right-to-left flowing canvas */
+  background-image: 
+    linear-gradient(270deg, #09090b 0%, #161622 35%, #2a2a3a 50%, #121216 75%, #050507 100%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  
+  /* Coordinates grid dimensions to space lines exactly 14px apart */
+  background-size: 200% 100%, 14px 14px, 14px 14px;
+  background-position: 0 0, center center, center center;
+  
+  /* Synchronized to reuse your right-to-left horizontal color wave motion */
+  animation: flowPinkRightToLeft 10s linear infinite;
+  
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(255, 23, 68, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ✨ Layer 3: Floating Silver Glitter Particle Mesh */
+.brand-footer-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  
+  /* Tiny metallic silver particle clusters */
+  background-image: 
+    radial-gradient(circle, #ffffff 1px, transparent 1.5px),
+    radial-gradient(circle, #c0c0c0 1px, transparent 2px);
+  background-size: 60px 60px, 90px 90px;
+  background-position: 0 0, 30px 45px;
+  opacity: 0.25; /* Kept subtle to prevent text clashing */
+  
+  animation: floatGlitter 12s linear infinite;
+  pointer-events: none;
+}
+
+/* Ensure typography blocks float safely over the background lighting */
+.brand-footer-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover over the brand card to intensify the neon red aura alignment */
+.brand-footer-card:hover {
+  border-color: rgba(255, 23, 68, 0.7);
+  box-shadow: 
+    0 0 25px rgba(255, 23, 68, 0.25),
+    inset 0 0 15px rgba(255, 23, 68, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   3. INTERNAL STRUCTURAL CONTENT LAYOUTS
+   ========================================================================== */
+.brand-header-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.brand-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-logo-icon {
+  color: #ff1744;
+  font-size: 20px;
+  filter: drop-shadow(0 0 6px rgba(255, 23, 68, 0.6));
+}
+
+.brand-title-wrap h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+}
+
+.status-indicator {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  color: #00e5ff;
+}
+
+.brand-description {
+  margin: 0 0 20px 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #a0a0b0;
+}
+
+/* Technical Metrics Rows */
+.brand-stats-row {
+  display: flex;
+  gap: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 16px;
+}
+
+.stat-node {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: #666677;
+}
+
