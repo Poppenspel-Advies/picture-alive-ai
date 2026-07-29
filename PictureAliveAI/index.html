@@ -36,23 +36,23 @@
         </div>
 
         <nav class="sidebar-nav" aria-label="Primary navigation">
-          <button class="nav-item active" data-nav-item>
+          <button class="nav-item" data-nav-item data-output="education">
             <span class="material-symbols-outlined">school</span>
             <span>Education</span>
           </button>
-          <button class="nav-item" data-nav-item>
+          <button class="nav-item" data-nav-item data-output="accessibility">
             <span class="material-symbols-outlined">accessibility_new</span>
             <span>Accessibility</span>
           </button>
-          <button class="nav-item" data-nav-item>
+          <button class="nav-item active" data-nav-item data-output="heritage_tourism">
             <span class="material-symbols-outlined">account_balance</span>
             <span>Heritage &amp; Tourism</span>
           </button>
-          <button class="nav-item" data-nav-item>
+          <button class="nav-item" data-nav-item data-output="digital_world">
             <span class="material-symbols-outlined">language</span>
             <span>Digital World</span>
           </button>
-          <button class="nav-item" data-nav-item>
+          <button class="nav-item" data-nav-item data-output="content_creation">
             <span class="material-symbols-outlined">movie_filter</span>
             <span>Content Creation</span>
           </button>
@@ -161,10 +161,10 @@
               <div class="preview-stage">
                 <img
                   id="main-preview"
-                  src="/assets/images/pictureAliveAI_mainPanelView.png"
+                  src="/assets/images/pictureAliveAI_HeritageMain.png"
                   alt="Generated visual preview"
                 />
-                <div class="preview-badge badge-left">EDUCATION</div>
+                <div class="preview-badge badge-left" id="categoryBadge">HERITAGE & TOURISM</div>
                 <div class="preview-badge badge-right">
                   <span class="dot"></span>
                   AI GENERATED
@@ -178,18 +178,7 @@
               </div>
 
               <div class="thumbnail-row" id="thumbnailRow">
-                <div class="thumb active">
-                  <img src="/assets/images/pictureAliveAI_Education1.png" alt="thumbnail" />
-                </div>
-                <div class="thumb">
-                  <img src="/assets/images/pictureAliveAI_Education2.png" alt="thumbnail" />
-                </div>
-                <div class="thumb">
-                  <img src="/assets/images/pictureAliveAI_Education3.png" alt="thumbnail" />
-                </div>
-                <div class="thumb">
-                  <img src="/assets/images/pictuteAliveAI_Education4.png" alt="thumbnail" />
-                </div>
+                  <!-- Content injected dynamically via app.js -->
               </div>
             </div>
           </div>
@@ -225,7 +214,7 @@
                 <div class="preview-header">
                   <div class="mini-title">
                     <span class="material-symbols-outlined">graphic_eq</span>
-                    <strong>HISTORICAL AUDIO GUIDE PREVIEW</strong>
+                    <strong>SAMPLE HISTORICAL AUDIO GUIDE PREVIEW</strong>
                   </div>
                  <!-- ⏱️ Real-time dynamic text display -->
     				       <span class="time-pill" id="timeDisplay">00:00 / --:--</span>
