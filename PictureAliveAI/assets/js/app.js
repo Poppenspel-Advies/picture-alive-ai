@@ -74,7 +74,142 @@ document.addEventListener('DOMContentLoaded', () => {
   const categoryBadge = document.getElementById('categoryBadge');
   const thumbnailRow = document.getElementById('thumbnailRow');
   const scrubberFill = document.getElementById('scrubberFill');
+
+	 // ⚙️ STATE FLAGS CONTROL MATRIX (Verification Metrics)
+  let isStoryGenerated = false; 
+  let targetUploadedFile = null;
   
+   // Select interface DOM element node tracks
+  const uploaderWorkspace = document.getElementById('uploaderStateWorkspace');
+  const storyWorkspace = document.getElementById('storyOutputStateWorkspace');
+  const dropZone = document.getElementById('dropZoneArea');
+  const fileInput = document.getElementById('hiddenFileInput');
+  const generateBtn = document.getElementById('executeGenerationTrigger');
+  const revertBtn = document.getElementById('revertToUploadBtn');
+  const storyTextField = document.getElementById('dynamicStoryTextContent');
+  
+  // 1. Initial State Orchestrator Check (Forces Uploader View On Page Load Natively)
+  evaluateActiveViewState();
+
+  // 2. Drag & Drop Event Handlers
+  dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('drag-over');
+  });
+
+  dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('drag-over');
+  });
+  
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+    const droppedFiles = e.dataTransfer.files;
+    if (droppedFiles.length > 0) {
+      processSelectedFileAsset(droppedFiles[0]);
+    }
+  });
+  
+  // 3. File Input Change Trigger
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files.length > 0) {
+      processSelectedFileAsset(e.target.files[0]);
+    }
+  });
+  
+  function processSelectedFileAsset(file) {
+    // Basic structural configuration security assertions
+    if (!file.type.startsWith('image/')) {
+      alert("Invalid selection. Please upload a supported image file (.jpg, .png, .webp).");
+      return;
+    }
+    
+    targetUploadedFile = file;
+    console.log(`📂 [Asset Loaded]: ${file.name} (Size: ${(file.size / 1024 / 1024).toFixed(2)} MB)`);
+    
+    // Dynamically unlock the main AI generation trigger button matrix
+    generateBtn.removeAttribute('disabled');
+    document.querySelector('.primary-drag-text').textContent = `Selected: ${file.name}`;
+  }
+
+  // 4. Form Submission Execution Action (API Gateway Bridge Integration Link)
+  generateBtn.addEventListener('click', () => {
+    if (!targetUploadedFile) return;
+    executeBackendGenerationPipeline(targetUploadedFile);
+  });
+
+  // 5. Revert View Workspace State Switching Controller
+  revertBtn.addEventListener('click', () => {
+    isStoryGenerated = false;
+    targetUploadedFile = null;
+    document.querySelector('.primary-drag-text').textContent = "Drag & Drop your image here";
+    generateBtn.setAttribute('disabled', 'true');
+    fileInput.value = ""; // Reset hidden file paths safely
+    evaluateActiveViewState();
+  });
+  
+  // 🔄 Verification Controller Render Engine Toggle Loop
+  function evaluateActiveViewState() {
+    if (isStoryGenerated) {
+      uploaderWorkspace.style.display = 'none';
+      storyWorkspace.style.display = 'block';
+    } else {
+      storyWorkspace.style.display = 'none';
+      uploaderWorkspace.style.display = 'block';
+    }
+  }
+
+  // 📡 BACKEND INTEGRATION GATEWAY API LINK ENGINE
+  function executeBackendGenerationPipeline(fileObject) {
+    // Visual indicators transition tracking update states
+    generateBtn.disabled = true;
+    generateBtn.innerHTML = `<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">sync</span> ANALYZING IMAGE MATRIX...`;
+
+    // Construct an isolated multi-part transaction payload block canvas form container
+    const payloadFormData = new FormData();
+    payloadFormData.append('image_asset', fileObject);
+    payloadFormData.append('text_model_scope', 'LLM-Alpha');
+    payloadFormData.append('vision_model_scope', 'Vision-Pro');
+
+    /* 
+       🚀 Live API Transaction Fetch Chain Block.
+       Replace '/api/v1/generate-story' with your production system API URL endpoint.
+    */
+    fetch('/api/v1/generate-story', {
+      method: 'POST',
+      body: payloadFormData
+    })
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP network error intercepted. Status code: ${response.status}`);
+      return response.json();
+    })
+    .then(serverPayloadData => {
+      console.log("📊 [Backend Handshake Successful]: Data structure received:", serverPayloadData);
+      
+      // Inject dynamic API data response content straight into output view text field components
+      if (storyTextField && serverPayloadData.generated_story) {
+        storyTextField.textContent = serverPayloadData.generated_story;
+      }
+      
+      // Toggle logic verification flags to switch workspace layouts automatically
+      isStoryGenerated = true;
+      evaluateActiveViewState();
+    })
+    .catch(runtimeError => {
+      console.error("❌ [API Engine Processing Failure]:", runtimeError);
+      alert("AI pipeline processing timed out. Simulating local backup sandbox visualization metrics for development...");
+      
+      // Local Backup Mock Trigger for offline testing stability loops
+      isStoryGenerated = true;
+      evaluateActiveViewState();
+    })
+    .finally(() => {
+      // Restore default UI button execution states
+      generateBtn.innerHTML = `<span class="material-symbols-outlined">bolt</span> GENERATE AI STORY`;
+    });
+  }
+  
+
   
   // 1. Initialize Default State (Loads Education natively on startup)
   loadCategoryWorkspace('heritage_tourism');
