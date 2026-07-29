@@ -10,10 +10,152 @@ const DEFAULT_PROFILE = {
     avatar: "/assets/images/sampleUserPictureAliveAI.png" // Default image path
 };
 
+const categoryMediaAssets = {
+  education: {
+    badgeText: "EDUCATION",
+    mainPreview: "/assets/images/pictureAliveAI_mainPanelView.png",
+    thumbnails: [
+      "/assets/images/pictureAliveAI_Education1.png",
+      "/assets/images/pictureAliveAI_Education2.png",
+      "/assets/images/pictureAliveAI_Education3.png",
+      "/assets/images/pictuteAliveAI_Education4.png" // Preserved your typo path token
+    ]
+  },
+  accessibility: {
+    badgeText: "ACCESSIBILITY",
+    mainPreview: "/assets/images/pictureAliveAI_AccessibilityMain.png",
+    thumbnails: [
+      "/assets/images/pictureAliveAI_Access1.png",
+      "/assets/images/pictureAliveAI_Access2.png",
+      "/assets/images/pictureAliveAI_Access3.png",
+      "/assets/images/pictureAliveAI_Access4.png"
+    ]
+  },
+  heritage_tourism: {
+    badgeText: "HERITAGE & TOURISM",
+    mainPreview: "/assets/images/pictureAliveAI_HeritageMain.png",
+    thumbnails: [
+      "/assets/images/pictureAliveAI_Heritage1.png",
+      "/assets/images/pictureAliveAI_Heritage2.png",
+      "/assets/images/pictureAliveAI_Heritage3.png",
+      "/assets/images/pictureAliveAI_Heritage4.png"
+    ]
+  },
+  digital_world: {
+    badgeText: "DIGITAL WORLD",
+    mainPreview: "/assets/images/pictureAliveAI_DigitalMain.png",
+    thumbnails: [
+      "/assets/images/pictureAliveAI_Digital1.png",
+      "/assets/images/pictureAliveAI_Digital2.png",
+      "/assets/images/pictureAliveAI_Digital3.png",
+      "/assets/images/pictureAliveAI_Digital4.png"
+    ]
+  },
+  content_creation: {
+    badgeText: "CONTENT CREATION",
+    mainPreview: "/assets/images/pictureAliveAI_ContentMain.png",
+    thumbnails: [
+      "/assets/images/pictureAliveAI_Content1.png",
+      "/assets/images/pictureAliveAI_Content2.png",
+      "/assets/images/pictureAliveAI_Content3.png",
+      "/assets/images/pictureAliveAI_Content4.png"
+    ]
+  }
+};
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const navItems = document.querySelectorAll('[data-nav-item]');
   const helpBtn = document.getElementById('helpEmailTrigger');
+
+	const menuTabs = document.querySelectorAll('.nav-item');
+  const mainPreviewImg = document.getElementById('main-preview');
+  const categoryBadge = document.getElementById('categoryBadge');
+  const thumbnailRow = document.getElementById('thumbnailRow');
+  const scrubberFill = document.getElementById('scrubberFill');
+  
+  
+  // 1. Initialize Default State (Loads Education natively on startup)
+  loadCategoryWorkspace('heritage_tourism');
+  
+  // 2. Tab Selection Click Listener
+  menuTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Extract data-output value attribute key string (e.g. "education", "digital_world")
+      const targetCategory = tab.dataset.output;
+      
+       if (targetCategory && categoryMediaAssets[targetCategory]) {
+        // Toggle structural active visibility aura states on navigation list links
+        menuTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        loadCategoryWorkspace(targetCategory);
+      }
+    });
+  });
+  
+   // 3. Render Engine Workspace Loader
+  function loadCategoryWorkspace(categoryKey) {
+    const dataPack = categoryMediaAssets[categoryKey];
+     if (!dataPack) return;
+
+    // 🎯 DEFENSIVE FIX: Guard content assignments with explicit element existence checks
+    if (mainPreviewImg){
+		
+    	mainPreviewImg.src = dataPack.mainPreview;
+    	 /* 🎯 THE FIX: Wait for the image file to load, then match the container height to it perfectly */
+    mainPreviewImg.onload = function() {
+      const container = document.querySelector('.preview-stage');
+      if (container) {
+        // Reads the physical width and height dimensions of the current image file
+        const imageWidth = mainPreviewImg.naturalWidth;
+        const imageHeight = mainPreviewImg.naturalHeight;
+        
+        // Sets the aspect ratio dynamically via CSS style injection
+        container.style.aspectRatio = `${imageWidth} / ${imageHeight}`;
+        container.style.height = 'auto'; // Release any fixed heights
+      }
+    };
+  }
+    
+    // This element assignment was causing your crash due to a missing/mismatched ID selector tag
+    if (categoryBadge) {
+      categoryBadge.textContent = dataPack.badgeText;
+    } else {
+      console.warn("⚠️ Warning: Element '#categoryBadge' was not located in your current HTML file.");
+    }
+
+
+     if (scrubberFill) scrubberFill.style.width = '0%';
+    if (!thumbnailRow) return;
+
+    // Clear previous elements inside thumbnail track node row
+    thumbnailRow.innerHTML = '';
+
+    // Loop data matrices to construct interactive image thumbnails dynamically
+    dataPack.thumbnails.forEach((thumbSrc, index) => {
+      const thumbWrap = document.createElement('div');
+      thumbWrap.className = `thumb ${index === 0 ? 'active' : ''}`; // Lock baseline active class onto first image card
+      
+      const imgNode = document.createElement('img');
+      imgNode.src = thumbSrc;
+      imgNode.alt = `${categoryKey} thumbnail option ${index + 1}`;
+
+      // Click to Swap Preview: Tapping a small thumbnail loads it into main preview space immediately
+      thumbWrap.addEventListener('click', () => {
+        // Toggle active border styling flags across elements
+        thumbnailRow.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+        thumbWrap.classList.add('active');
+        
+        // Push thumb source link path to main viewport screen
+        mainPreviewImg.src = thumbSrc;
+      });
+
+      // Assemble nodes
+      thumbWrap.appendChild(imgNode);
+      thumbnailRow.appendChild(thumbWrap);
+    });
+  }
 
    // 1. Core Routine: Listen if this specific tab context is the popup window returning data
   handleIncomingOAuthCallback();
