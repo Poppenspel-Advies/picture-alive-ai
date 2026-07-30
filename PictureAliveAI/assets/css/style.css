@@ -134,27 +134,61 @@ button {
 }
 
 .nav-item {
-  width: 100%;
+  /* Retain your existing base flex padding layout configuration styles */
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 14px;
-  border: none;
-  border-left: 2px solid transparent;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  
+  /* Initial default state is transparent to stay clean and minimalist */
   background: transparent;
-  color: var(--silver-soft);
-  text-align: left;
-  transition: all 0.2s ease;
-  opacity: 0.75;
+  border: 1px solid transparent;
+  color: #a0a0b0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-item:hover,
 .nav-item.active {
-  opacity: 1;
-  color: var(--red-soft);
-  border-left-color: var(--red-soft);
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.25), inset 0 0 10px rgba(255, 0, 0, 0.1);
+   color: #ffffff !important;
+  font-weight: 700;
+  
+  /* 🟥 1. Outer perimeter red tracking laser border outline */
+  border: 1px solid rgba(255, 23, 68, 0.85) !important;
+  
+  /* 🎨 2. Background Matrix: Right-to-left flowing charcoal-to-laser red gradient mesh */
+  background: linear-gradient(270deg, #ff1744 0%, rgba(255, 23, 68, 0.2) 30%, #161622 75%, #0d0d12 100%) !important;
+  background-size: 200% 100% !important;
+  background-position: 0 0;
+  
+  /* High-luminescence ambient light bleed shadow aura */
+  box-shadow: 
+    0 0 15px rgba(255, 23, 68, 0.4),
+    inset 0 0 10px rgba(255, 23, 68, 0.2) !important;
+  
+  /* 🔄 Animation Loop: Synchronized to use your exact 'flowPinkRightToLeft' movement timing keyframe */
+  animation: flowPinkRightToLeft 4s linear infinite !important;
+}
+
+/* ⚡ Hover Acceleration State: Enhances unselected items with a responsive red flare */
+.nav-item:not(.active):hover {
+  color: #ffffff;
+  background: rgba(255, 23, 68, 0.05);
+  border-color: rgba(255, 23, 68, 0.25);
+  box-shadow: 0 0 10px rgba(255, 23, 68, 0.1);
+}
+
+/* 🎨 Synchronize inner Material Icon vector color glows explicitly */
+.nav-item.active .material-symbols-outlined {
+  color: #ff1744 !important;
+  filter: drop-shadow(0 0 6px rgba(255, 23, 68, 0.8));
 }
 
  /* Red text and neon text-glow targets both spans */
@@ -909,26 +943,134 @@ button {
   color: var(--silver-soft);
 }
 
-.toast {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.82);
-  border: 1px solid rgba(255, 23, 68, 0.52);
-  color: white;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: all 0.18s ease;
+/* ==========================================================================
+   🎯 PREMIUM EXPANDED TOAST CARD: Fixed Image Isolation & Added Close Icon
+   ========================================================================== */
+div.toast#toast {
+  position: fixed !important;
+  top: 32px !important;
+  right: 32px !important;
+  left: auto !important; /* Cancels out any old 'left: 50%' centers */
+  transform: none !important;
+  
+  /* 📐 Sized larger to look like a premium control panel card block */
+  width: 440px !important;
+  max-width: 90vw !important;
+  padding: 18px 20px !important;
+  border-radius: 12px !important;
+  font-family: system-ui, -apple-system, sans-serif !important;
+  color: #ffffff !important;
+  box-sizing: border-box !important;
+  
+  display: none;
+  align-items: center !important;
+  gap: 16px !important;
+  z-index: 100000 !important;
+  
+  /* 🟥 Laser-red frame line outline */
+  border: 2px solid #ff1744 !important;
+  
+  /* Background Canvas Layout with digital grid mesh texture */
+  background-image: 
+    linear-gradient(270deg, #09090b 0%, #161622 40%, #121216 100%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 14px 14px, 14px 14px !important;
+  background-position: center !important;
+  
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* ⚡ Ensure the display flex rule updates on show trigger state */
+div.toast#toast.show {
+  display: flex !important;
+  animation: 
+    toastSlowGlideIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+    toastGlowBreathing 3s ease-in-out infinite alternate !important;
 }
 
 .toast.show {
-  opacity: 1;
-  transform: translateY(0);
+  display: flex !important;
+  
+  /* 🔄 Slow Cinematic Entry: Smooth fade and horizontal slide with zero aggressive bounce */
+  animation: 
+    toastSlowGlideIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+    toastGlowBreathing 3s ease-in-out infinite alternate;
 }
 
+/* 🎯 The Logo Canvas Frame Box */
+.toast-logo-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 23, 68, 0.5);
+  background: rgba(0, 0, 0, 0.6) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(255, 23, 68, 0.2);
+  overflow: hidden;
+}
+
+.toast-logo-wrap img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 6px !important;
+  display: block !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Typography Text Wrapping Area */
+.toast-content-block {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  flex-grow: 1 !important;
+}
+
+.toast-title-text {
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3) !important;
+}
+
+.toast-message-text {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  color: #cccccc !important;
+}
+
+/* ❌ THE FIX: Custom interactive Close Button Element */
+.toast-close-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #666677 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 4px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.toast-close-btn:hover {
+ color: #ff1744 !important;
+  background: rgba(255, 23, 68, 0.1) !important;
+  box-shadow: 0 0 8px rgba(255, 23, 68, 0.3) !important;
+}
 
 .studio-wrapper {
   position: relative;
@@ -1554,5 +1696,33 @@ button {
 .stat-label {
   font-size: 10px;
   color: #666677;
+}
+
+/* ==========================================================================
+   🎥 SLOW CINEMATIC MOTION LOOPS (Keep at the very bottom of style.css)
+   ========================================================================== */
+
+/* Smooth, premium horizontal fade-in glide path */
+@keyframes toastSlowGlideIn {
+  0% { transform: translateX(40px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* High-luminescence slow breathing red-to-pink light emission blast */
+@keyframes toastGlowBreathing {
+  0% { box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 23, 68, 0.3); border-color: #ff1744; }
+  100% { box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 0, 127, 0.5); border-color: #ff007f; }
+}
+
+/* ==========================================================================
+   CORE MOTION KEYFRAME LOOPS (Keep grouped at the very bottom of style.css)
+   ========================================================================== */
+@keyframes flowPinkRightToLeft {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%; /* Slides red color vectors seamlessly horizontally */
+  }
 }
 
