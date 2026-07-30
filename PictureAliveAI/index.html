@@ -51,6 +51,11 @@
           <button class="nav-item" data-nav-item data-output="digital_world">
             <span class="material-symbols-outlined">language</span>
             <span>Digital World</span>
+			  <!-- 🎯 THE FIX: Tiny global symbols representing Wildlife (pets) and Product (inventory_2) -->
+		    <div class="nav-sub-meta" style="display: flex; align-items: center; gap: 4px; color: rgba(255,255,255,0.4); font-size: 10px;">
+		      <span class="material-symbols-outlined" style="font-size: 12px !important;">pets</span>
+		      <span class="material-symbols-outlined" style="font-size: 12px !important;">inventory_2</span>
+		    </div>
           </button>
           <button class="nav-item" data-nav-item data-output="content_creation">
             <span class="material-symbols-outlined">movie_filter</span>
@@ -298,7 +303,7 @@
 
       <!-- Core Generation Action Pipeline Switch -->
       <button class="action-generate-btn" id="executeGenerationTrigger" disabled>
-        <span class="material-symbols-outlined">bolt</span> GENERATE AI STORY
+        <span class="material-symbols-outlined">bolt</span> GENERATE AI RESPONSE
       </button>
     </div>
 
