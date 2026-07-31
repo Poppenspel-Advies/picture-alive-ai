@@ -6,6 +6,8 @@ const FALLBACK_AVATAR = "https://lh3.googleusercontent.com/aida-public/AB6AXuCtB
 
 let toastRemovalTimer = null;
 
+  
+  
 const DEFAULT_PROFILE = {
     name: "Arpita Robert",
     team: "Team Innovators",
@@ -81,6 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
   let isStoryGenerated = false; 
   let targetUploadedFile = null;
   
+  // ⚙️ System state configurations tracking metrics
+  let activeSelectedMode = 'heritage_tourism'; // Matches your startup layout state defaults
+  let activeAudioTrackBlobUrl = null;
+  let targetUploadedFileBlob = null; // Stores the file for later execution
+  
+  // Select layout element target nodes
+  const hiddenAudioNode = document.getElementById('hiddenPreviewAudio');
+  const playPreviewBtn = document.getElementById('playPreview');
+  const mainPlayIcon = document.getElementById('mainPlayIcon');
+  const scrubberTrack = document.getElementById('previewScrubberTrack');
+   const uploaderCard = document.getElementById('uploaderStateWorkspace');
+  
    // Select interface DOM element node tracks
   const uploaderWorkspace = document.getElementById('uploaderStateWorkspace');
   const storyWorkspace = document.getElementById('storyOutputStateWorkspace');
@@ -149,11 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.primary-drag-text').textContent = `Selected: ${file.name}`;
   }
 
-  // 4. Form Submission Execution Action (API Gateway Bridge Integration Link)
-  generateBtn.addEventListener('click', () => {
-    if (!targetUploadedFile) return;
-    executeBackendGenerationPipeline(targetUploadedFile);
-  });
 
   // 5. Revert View Workspace State Switching Controller
   revertBtn.addEventListener('click', () => {
@@ -176,57 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 📡 BACKEND INTEGRATION GATEWAY API LINK ENGINE
-  function executeBackendGenerationPipeline(fileObject) {
-    // Visual indicators transition tracking update states
-    generateBtn.disabled = true;
-    generateBtn.innerHTML = `<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">sync</span> ANALYZING IMAGE MATRIX...`;
-
-    // Construct an isolated multi-part transaction payload block canvas form container
-    const payloadFormData = new FormData();
-    payloadFormData.append('image_asset', fileObject);
-    payloadFormData.append('text_model_scope', 'LLM-Alpha');
-    payloadFormData.append('vision_model_scope', 'Vision-Pro');
-
-    /* 
-       🚀 Live API Transaction Fetch Chain Block.
-       Replace '/api/v1/generate-story' with your production system API URL endpoint.
-    */
-    fetch('/api/v1/generate-story', {
-      method: 'POST',
-      body: payloadFormData
-    })
-    .then(response => {
-      if (!response.ok) throw new Error(`HTTP network error intercepted. Status code: ${response.status}`);
-      return response.json();
-    })
-    .then(serverPayloadData => {
-      console.log("📊 [Backend Handshake Successful]: Data structure received:", serverPayloadData);
-      
-      // Inject dynamic API data response content straight into output view text field components
-      if (storyTextField && serverPayloadData.generated_story) {
-        storyTextField.textContent = serverPayloadData.generated_story;
-      }
-      
-      // Toggle logic verification flags to switch workspace layouts automatically
-      isStoryGenerated = true;
-      evaluateActiveViewState();
-    })
-    .catch(runtimeError => {
-      console.error("❌ [API Engine Processing Failure]:", runtimeError);
-      alert("AI pipeline processing timed out. Simulating local backup sandbox visualization metrics for development...");
-      
-      // Local Backup Mock Trigger for offline testing stability loops
-      isStoryGenerated = true;
-      evaluateActiveViewState();
-    })
-    .finally(() => {
-      // Restore default UI button execution states
-      generateBtn.innerHTML = `<span class="material-symbols-outlined">bolt</span> GENERATE AI STORY`;
-    });
-  }
   
-
   
   // 1. Initialize Default State (Loads Education natively on startup)
   loadCategoryWorkspace('heritage_tourism');
@@ -236,15 +195,245 @@ document.addEventListener('DOMContentLoaded', () => {
     tab.addEventListener('click', () => {
       // Extract data-output value attribute key string (e.g. "education", "digital_world")
       const targetCategory = tab.dataset.output;
+      activeSelectedMode = tab.dataset.output;
+      
+      console.log(`🎯 [Mode Context Shift]: System operations mapped to: "${activeSelectedMode}"`);
+
       
        if (targetCategory && categoryMediaAssets[targetCategory]) {
         // Toggle structural active visibility aura states on navigation list links
         menuTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         loadCategoryWorkspace(targetCategory);
+        // Reset playback controls to prevent track cross-bleeding
+        resetAudioPreviewCanvas();
       }
     });
   });
+  
+  // 2. Intercept image upload, swap preview canvas layout instantly, then run API calls
+  if (fileInput) {
+    fileInput.addEventListener('change', (event) => {
+      const selectedFile = event.target.files[0];
+      if (!selectedFile) return;
+
+      // 📏 Client-side 20MB payload safeguard validation parameters check
+      if (selectedFile.size > 20 * 1024 * 1024) {
+        if (typeof showToast === 'function') {
+        showToast(`File is too large! Maximum limit is 20MB. Your file: ${(selectedFile.size / 1024 / 1024).toFixed(2)}MB`);
+        }
+        fileInput.value = ""; 
+        return;
+      }
+      
+      // Lock file into memory placeholder
+      targetUploadedFileBlob = selectedFile;
+      console.log(`📂 [Asset Staged]: ${selectedFile.name} ready for explicit click generation command.`);
+
+
+      console.log(`📂 [Image Captured]: Rendering "${selectedFile.name}" instantly to main viewer card...`);
+
+      // 🎯 STEP 1: Instant Viewer Update. Convert local file block into an active view path link
+      const temporaryObjectUrl = URL.createObjectURL(selectedFile);
+      if (mainPreviewImg) {
+        mainPreviewImg.src = temporaryObjectUrl;
+      }
+
+      // Hide uploader workspace state panels automatically
+      const uploaderCard = document.getElementById('uploaderStateWorkspace');
+      if (uploaderCard) uploaderCard.style.display = 'block';
+
+     // 🛑 THE FIX: Keep uploader visible, display filename text, and UNLOCK generate button
+      const dragText = document.querySelector('.primary-drag-text');
+      if (dragText) dragText.textContent = `Ready: ${selectedFile.name}`;
+      
+      if (generateBtn) generateBtn.removeAttribute('disabled');
+    });
+  }
+
+ // 🎯 2. EXPLICIT USER CLICK TRIGGER ACTION PIPELINE
+  if (generateBtn) {
+    generateBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      if (!targetUploadedFileBlob) {
+        if (typeof showToast === 'function') showToast("Please select or drop an image asset first.");
+        return;
+      }
+
+      // Fire processing transaction loops
+      executeMultimodalGeneration(targetUploadedFileBlob, activeSelectedMode);
+    });
+  }
+
+// 📡 3. UNIFIED API CALL WITH INTEGRATED LOADING STATES
+  function executeMultimodalGeneration(fileAsset, targetMode) {
+    console.log("🚀 [API Handshake]: User triggered Generation. Initializing UI loading configurations...");
+    
+    // ⏳ STEP A: Enforce Busy Cursor and Loading Indicators globally
+    document.body.style.cursor = "wait"; 
+    if (generateBtn) {
+      generateBtn.disabled = true;
+      generateBtn.innerHTML = `<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">sync</span> SYSTEM GENERATING...`;
+    }
+    
+     // 🎯 THE ARRAY ISOLATION SAFETY GUARD:
+  // If fileAsset is still wrapped inside a FileList container, extract index 0
+  const cleanBinaryFile = (fileAsset instanceof FileList) ? fileAsset[0] : fileAsset;
+
+  // 🎯 THE MULTI-PART PACKAGING FIX:
+  // Construct a fresh FormData instance and map the key 'image' to match your FastAPI parameter exactly
+  const payloadContainer = new FormData();
+  payloadContainer.append('image', cleanBinaryFile);  
+
+    // 🎯 THE ABSOLUTE RELATIVE PATH FIX: Built using explicit string concatenation to avoid syntax bugs
+  // This constructs EXACTLY: "api/modes/heritage_tourism/generate" (relative to your active port)
+   const apiEndpointUrl = "http://127.0.0.1:8000" +"/api/modes/" + targetMode + "/generate";
+ console.log("📡 [Outbound Request]: Target Path verified -> " + apiEndpointUrl);
+
+  // ==========================================================================
+  // 🔍 THE INSPECTION LOOP: Read exactly what is being sent inside the payload
+  // ==========================================================================
+  console.log("📊 [Payload Debugger]: Opening FormData internal keys configuration layout...");
+  for (let [key, value] of payloadContainer.entries()) {
+    if (value instanceof File) {
+      console.log(`✅ Form Key: "${key}" -> File Name: "${value.name}" | Size: ${(value.size / 1024 / 1024).toFixed(2)} MB | Type: "${value.type}"`);
+    } else {
+      console.log(`✅ Form Key: "${key}" -> Content Value: "${value}"`);
+    }
+  }
+
+
+    fetch(apiEndpointUrl, {
+      method: 'POST',
+      body: payloadContainer
+    })
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP transaction stall. Status returned: ${response.status}`);
+      return response.blob(); 
+    })
+    .then(audioBlobData => {
+      console.log("✅ [API Process Success]: Binary sound vectors unpacked safely.");
+      
+      // Mount path elements to baseline players
+      const activeAudioTrackBlobUrl = URL.createObjectURL(audioBlobData);
+      if (hiddenAudioNode) {
+        hiddenAudioNode.src = activeAudioTrackBlobUrl;
+        hiddenAudioNode.load();
+      }
+
+      // 🟢 SUCCESS STATE ROUTINE: Swap panels and show output text dashboard blocks
+      if (uploaderCard) uploaderCard.style.display = 'none';
+      if (storyWorkspace) {
+        storyWorkspace.style.display = 'block';
+        
+        // Populate the response text container dynamically
+        const storyTextField = document.getElementById('dynamicStoryTextContent');
+        if (storyTextField) {
+          storyTextField.textContent = `Multimodal extraction complete for ${targetMode.toUpperCase()} mode. Your high-fidelity synchronized AI voiceover narration guide file is loaded and ready for immediate viewport streaming playback execution.`;
+        }
+      }
+    })
+    .catch(err => {
+      console.error("❌ [API Processing Failed]:", err);
+      
+      // 🔴 ERROR STATE ROUTINE: Keep uploader hidden, load story div, and force ERROR layout values
+      if (uploaderCard) uploaderCard.style.display = 'none';
+      if (storyWorkspace) {
+        storyWorkspace.style.display = 'block';
+        
+        // Target structural header and paragraphs to display error details explicitly
+        const storyHeaderTitle = document.querySelector('.story-head h3');
+        if (storyHeaderTitle) {
+          storyHeaderTitle.textContent = "ERROR";
+          storyHeaderTitle.style.color = "#ff1744";
+          storyHeaderTitle.style.textShadow = "0 0 10px #ff1744";
+        }
+        
+        const storyTextField = document.getElementById('dynamicStoryTextContent');
+        if (storyTextField) {
+          storyTextField.textContent = `SYSTEM ERROR DETAILS: ${err.message}. Please check if your FastAPI python backend script is actively running on port 8000 and ensure CORS origins mapping rules permit inbound cross-communication tracks.`;
+          storyTextField.style.color = "#ff8a9f";
+        }
+      }
+    })
+    .finally(() => {
+      // 🛑 STEP B: Complete Processing Lifecycle. Restore default cursor and buttons layout metrics
+      document.body.style.cursor = "default";
+      if (generateBtn) {
+        generateBtn.innerHTML = `<span class="material-symbols-outlined">bolt</span> GENERATE AI STORY`;
+        // Keep enabled if error occurs so users can try clicking again cleanly
+        if (!storyWorkspace || storyWorkspace.style.display === 'none') {
+          generateBtn.removeAttribute('disabled');
+        }
+      }
+    });
+  }
+
+
+
+  // 4. Integrated Player Controller Logic Loop Hooks (Handles Play/Pause click toggle transformations)
+  if (playPreviewBtn && hiddenAudioNode) {
+    playPreviewBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      if (!hiddenAudioNode.src) {
+        if (typeof showToast === 'function') showToast("Please upload an image asset first to compile an active audio guide track.");
+        return;
+      }
+
+      if (hiddenAudioNode.paused) {
+        hiddenAudioNode.play();
+        mainPlayIcon.textContent = "pause";
+        console.log("🔊 [Media Stream]: Playback stream initiated.");
+      } else {
+        hiddenAudioNode.pause();
+        mainPlayIcon.textContent = "play_arrow";
+        console.log("⏸️ [Media Stream]: Playback paused.");
+      }
+    });
+
+    // 5. Scrubber timeline tracking bar moving update parameters animation loops
+    hiddenAudioNode.addEventListener('timeupdate', () => {
+      const currentProgressPosition = (hiddenAudioNode.currentTime / hiddenAudioNode.duration) * 100;
+      if (scrubberFill) {
+        scrubberFill.style.width = `${currentProgressPosition}%`;
+      }
+    });
+
+    // Handle audio loop finishing bounds reset triggers cleanly
+    hiddenAudioNode.addEventListener('ended', () => {
+      mainPlayIcon.textContent = "play_arrow";
+      if (scrubberFill) scrubberFill.style.width = '0%';
+    });
+  }
+
+  // 6. Interactive timeline track clicking logic (Enables jumping to specific sections of the MP3 file)
+  if (scrubberTrack && hiddenAudioNode) {
+    scrubberTrack.addEventListener('click', (event) => {
+      if (!hiddenAudioNode.src || !hiddenAudioNode.duration) return;
+
+      // Extract horizontal alignment pixel parameters relative to track bounding box shapes
+      const timelineRectBounds = scrubberTrack.getBoundingClientRect();
+      const clickCoordinateX = event.clientX - timelineRectBounds.left;
+      const clickedPercentageRatio = clickCoordinateX / timelineRectBounds.width;
+
+      // Convert ratio straight to timeline second frames indices metrics
+      hiddenAudioNode.currentTime = clickedPercentageRatio * hiddenAudioNode.duration;
+      console.log(`🎯 [Timeline Scrub]: Audio track skip executed to: ${(hiddenAudioNode.currentTime).toFixed(1)}s`);
+    });
+  }
+
+  // Clean layout helper parameters
+  function resetAudioPreviewCanvas() {
+    if (hiddenAudioNode) {
+      hiddenAudioNode.pause();
+      hiddenAudioNode.src = "";
+    }
+    if (mainPlayIcon) mainPlayIcon.textContent = "play_arrow";
+    if (scrubberFill) scrubberFill.style.width = '0%';
+  }
+
   
    // 3. Render Engine Workspace Loader
   function loadCategoryWorkspace(categoryKey) {
@@ -269,6 +458,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
   }
+  
+  
     
     // This element assignment was causing your crash due to a missing/mismatched ID selector tag
     if (categoryBadge) {
@@ -691,3 +882,5 @@ function dismissToastCardInstantly(element) {
     element.style.transform = "";
   }, 300);
 }
+
+
