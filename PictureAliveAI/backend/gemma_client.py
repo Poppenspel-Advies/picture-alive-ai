@@ -16,10 +16,10 @@ def generate(image_bytes: bytes, mode: str) -> str:
     
     Args:
         image_bytes: Raw JPEG/PNG bytes
-        mode: 'audio_guide' | 'story_creator' | 'historical_guide' | 'creative_studio'
+        mode: 'education' | 'accessibility' | 'heritage_tourism' | 'digital_world' | 'content_creation'
     
     Returns:
-        str: Generated text (narration, story, context, or prompts)
+        str: Generated text (education, accessibility, audio historical guide, narration,  wildlige & product, story, context, or prompts)
     """
     if mode not in MODE_PROMPTS:
         raise ValueError(f"Unknown mode: {mode}. Valid: {list(MODE_PROMPTS)}")
