@@ -163,7 +163,7 @@
             </div>
 
             <div class="panel-body">
-              <div class="preview-stage">
+              <div class="preview-stage"  id="previewStageView">
                 <img
                   id="main-preview"
                   src="/assets/images/pictureAliveAI_HeritageMain.png"
@@ -174,13 +174,17 @@
                   <span class="dot"></span>
                   AI GENERATED
                 </div>
-                <button class="play-button" id="playPreview">
-                  <span class="material-symbols-outlined">play_arrow</span>
+                <button class="play-button" id="playPreview"  style="position: absolute; z-index: 10; cursor: pointer;">
+                  <span class="material-symbols-outlined"  id="mainPlayIcon">play_arrow</span>
                 </button>
-                <div class="scrubber">
-                  <div class="scrubber-fill"></div>
+                <div class="scrubber" id="previewScrubberTrack" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: rgba(255,255,255,0.1); cursor: pointer; z-index: 10;">
+                  <div class="scrubber-fill" id="previewScrubberFill" style="width: 0%; height: 100%; background: #ff1744; transition: width 0.1s linear;"></div>
                 </div>
               </div>
+ 
+              <!-- 🚷 Invisible Audio Element Layer for processing background playback stream buffers -->
+  			<audio id="hiddenPreviewAudio" preload="auto"></audio>
+
 
               <div class="thumbnail-row" id="thumbnailRow">
                   <!-- Content injected dynamically via app.js -->
