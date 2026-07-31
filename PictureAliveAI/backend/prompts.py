@@ -78,7 +78,7 @@ MODE_PROMPTS: dict[str, dict[str, str]] = {
             "Product impact in real world and practical real world scenarios to use of the product, technology, innovation behind the product,, \n"
             "the cost effectiveness of the product, trademark , potential users, product architecture, current location,, \n" 
             "date, country, year. The future growth and market potential of the product along with all the details present, \n"
-            "in the images to the user within 1500 words for Picture Alive AI content creation. Convey your response in US English.,\n\n"
+            "in the images to the user within 1500 words for Picture Alive AI digital world. Convey your response in US English.,\n\n"
             "Visual analysis:\n{analysis}"
         ),
     },
@@ -100,7 +100,7 @@ MODE_PROMPTS: dict[str, dict[str, str]] = {
             "ending at the end of the story. The characters names can be unique and defines, \n" 
             "them the way a movie character get define. The story can have characters outside, \n" 
             "the user image but it should match with the flow of your story telling and it can be, \n" 
-            "imaginative too. Each characters feeling and uniqueness should be covered by your story telling too., \n" 
+            "imaginative too. Each characters feeling and uniqueness should be covered by your story telling too for Picture Alive AI content creation., \n" 
             "Convey your response within 1500 words and in US English., \n\n"
             "Visual analysis:\n{analysis}"
         ),
