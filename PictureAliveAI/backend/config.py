@@ -15,9 +15,9 @@ KOKORO_SAMPLE_RATE = int(os.getenv("KOKORO_SAMPLE_RATE", "24000"))
 KOKORO_OUTPUT_DIR = os.getenv("KOKORO_OUTPUT_DIR", "audio_output")
 
 # ── Limits ────────────────────────────────────────────────────
-MAX_IMAGE_BYTES = 10 * 1024 * 1024  # 10 MB
+MAX_IMAGE_BYTES = 20 * 1024 * 1024  # 10 MB
 MAX_TOKENS_TEXT = 2048
-ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
+ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif", "image/jpg"}
 
 # ── CORS ─────────────────────────────────────────────────────
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*").split(",")
