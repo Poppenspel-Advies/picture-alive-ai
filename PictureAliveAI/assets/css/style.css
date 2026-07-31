@@ -517,10 +517,12 @@ button {
   display: block;
 }
 
-.preview-badge {
-  position: absolute;
+.preview-badge,
+.play-button, 
+.scrubber {
+  position: absolute  !important;
   top: 16px;
-  z-index: 2;
+  z-index: 10 !important;
   padding: 7px 10px;
   border-radius: 8px;
   font-size: 10px;
@@ -552,17 +554,27 @@ button {
 }
 
 .play-button {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 80px;
-  height: 80px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  border: 2px solid rgba(255, 23, 68, 0.8);
-  background: rgba(255, 23, 68, 0.18);
-  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 23, 68, 0.6);
+  background: rgba(10, 10, 14, 0.8);
+  color: #ff1744;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 23, 68, 0.4);
+  transition: all 0.2s ease;
+}
+
+.play-button:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: #ff1744;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(255, 23, 68, 0.8);
 }
 
 .scrubber {
@@ -1724,5 +1736,10 @@ div.toast#toast.show {
   100% {
     background-position: 200% 50%; /* Slides red color vectors seamlessly horizontally */
   }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
