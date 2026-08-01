@@ -5,8 +5,6 @@ const GOOGLE_CLIENT_ID = "424486537653-6a42le0pu2s0tn4m0re640orssg43pj6.apps.goo
 const FALLBACK_AVATAR = "https://lh3.googleusercontent.com/aida-public/AB6AXuCtBpV71QtTo17hmuGO2wIHqo62c3izFoKE5XQuFilvfhvJ3XWvENNbR_xv24kR1qb4eJXyQaunacmYW7byLNltRAaI-lPVbtFRnt3TTubuS59iuGGbC6xsypQoYVynfEsYnuLkFv_JDOu-_CfeidHGdkvJRGSIhTpoiP_ZoOyaOpDaVqHN_ns6AQhPTJiRA_NudBKFlYVfodU4ZzeokFuBHyiWsVVQYlKP60yf1bCG10Ma7iHSJh_p";
 
 let toastRemovalTimer = null;
-
-  
   
 const DEFAULT_PROFILE = {
     name: "Arpita Robert",
@@ -87,6 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeSelectedMode = 'heritage_tourism'; // Matches your startup layout state defaults
   let activeAudioTrackBlobUrl = null;
   let targetUploadedFileBlob = null; // Stores the file for later execution
+
+  let lastGeneratedFilename = null;
+  // binary audio file blob into memory the exact millisecond it arrives from your backend!
+  let successfullyCompiledAudioBlobCache = null; 
+  // Interface selectors
+  const leftPanelDownloadBtn = document.querySelector('button.action-item[data-action="download"]');
   
   // Select layout element target nodes
   const hiddenAudioNode = document.getElementById('hiddenPreviewAudio');
@@ -132,6 +136,89 @@ document.addEventListener('DOMContentLoaded', () => {
       processSelectedFileAsset(e.target.files[0]);
     }
   });
+
+ // ==========================================================================
+  // 📥 BULLETPROOF FRONTEND DOWNLOAD HANDLER (Instant Memory Saving Execution)
+  // ==========================================================================
+  if (leftPanelDownloadBtn) {
+    leftPanelDownloadBtn.onclick = function(event) {
+      event.preventDefault();
+      event.stopPropagation(); // Forces mock scripts to drop processing hooks completely
+      
+      console.log("📥 [Download System]: Initializing instant, non-blocking local memory download extraction...");
+
+      // 🛑 1. Safety Guard Check: Reject if our memory binary cache variable is empty
+      if (!successfullyCompiledAudioBlobCache) {
+        console.error("❌ [Download Aborted]: Memory binary block cache is empty.");
+        if (typeof showToast === 'function') {
+          showToast("No active media generated yet! Please select an image and click 'Generate AI Story' first.");
+        }
+        return;
+      }
+
+      try {
+        // 🛠️ Step A: Isolate the unique 12-character alphanumeric hash code from the string
+        let fileHashFragment = "PREVIEW";
+        if (lastGeneratedFilename) {
+          const hashMatch = lastGeneratedFilename.match(/speech_(.*?)\.wav/i);
+          if (hashMatch && hashMatch[1]) {
+            fileHashFragment = hashMatch[1].toUpperCase(); 
+          }
+        }
+
+        // 🛠️ Step B: Format the active navigation sidebar category selection tag cleanly
+        const formattedModeLabel = activeSelectedMode.replace(/_/g, "-").toUpperCase();
+
+        // 🎯 CUSTOM APPLICATION NAME SIGNATURE CONVENTION
+        // Compiles exactly: PICTURE-ALIVE-AI_HERITAGE-TOURISM_0CD25147E121_4K.wav
+        const customApplicationFilename = `PICTURE-ALIVE-AI_${formattedModeLabel}_${fileHashFragment}_4K.wav`;
+
+        console.log(`💾 [Formatting Output Filename]: "${customApplicationFilename}"`);
+
+        // 🎯 THE BYPASS: Turn the pre-saved memory binary blob directly into a clean, local file download link
+        const localDownloadReferenceUrl = window.URL.createObjectURL(successfullyCompiledAudioBlobCache);
+
+        // 🛠️ Step C: Build an isolated, invisible HTML anchor link node in memory
+        const virtualDownloadAnchor = document.createElement('a');
+        virtualDownloadAnchor.href = localDownloadReferenceUrl;
+
+        // Force the browser to rename the file signature custom layout format name tag
+        virtualDownloadAnchor.setAttribute('download', customApplicationFilename);
+        
+        // Keep it hidden outside the layout trees to prevent visual layout shifts
+        virtualDownloadAnchor.style.display = 'none';
+        document.body.appendChild(virtualDownloadAnchor);
+
+        // 💥 Fire the physical browser download window save dialogue window trigger event
+        virtualDownloadAnchor.click();
+
+        // 🧹 Garbage Collection Layer: Immediately clear allocated local reference tracks
+        document.body.removeChild(virtualDownloadAnchor);
+        window.URL.revokeObjectURL(localDownloadReferenceUrl); // Frees local system RAM allocations instantly
+        
+        console.log("✅ [Local Download Success]: File payload written to system downloads directory successfully.");
+        if (typeof showToast === 'function') {
+          showToast("Download started successfully!");
+        }
+
+      } catch (downloadExceptionErr) {
+        console.error("❌ [Download Exception Fault]: Data file renaming track failed:", downloadExceptionErr);
+        
+        // 🚀 CRITICAL EMERGENCY FALLBACK LINK: Direct Route to your Python File server if local RAM tracking stalls
+        if (lastGeneratedFilename) {
+          console.log("📡 [Download Fallback]: Fetching raw file attachment link directly from FastAPI backend...");
+          const fallbackUrl = `http://127.0.0{lastGeneratedFilename}`;
+          const fallbackAnchor = document.createElement('a');
+          fallbackAnchor.href = fallbackUrl;
+          fallbackAnchor.setAttribute('download', `PICTURE-ALIVE-AI_${activeSelectedMode.toUpperCase()}_4K.wav`);
+          fallbackAnchor.style.display = 'none';
+          document.body.appendChild(fallbackAnchor);
+          fallbackAnchor.click();
+          document.body.removeChild(fallbackAnchor);
+        }
+      }
+    };
+  }
   
   function processSelectedFileAsset(file) {
     // 1. File Type Validation Shield
@@ -310,10 +397,25 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(response => {
       if (!response.ok) throw new Error(`HTTP transaction stall. Status returned: ${response.status}`);
+		 // Capture original filename string token indicators out of headers safely
+      const contentDisposition = response.headers.get('Content-Disposition');
+      if (contentDisposition) {
+        const filenameMatch = contentDisposition.match(/filename="?([^"]+)"?/i);
+        if (filenameMatch && filenameMatch[1]) {
+          lastGeneratedFilename = filenameMatch[1]; 
+          console.log(`🏷️ [System Network Sync]: Cached backend file pointer reference -> "${lastGeneratedFilename}"`);
+        }
+      }
+	
       return response.blob(); 
     })
     .then(audioBlobData => {
       console.log("✅ [API Process Success]: Binary sound vectors unpacked safely.");
+
+	  // ==========================================================================
+      // 🎯 THE GENIUS CACHE FIX: Lock the raw binary blob into memory right now!
+      // ==========================================================================
+      successfullyCompiledAudioBlobCache = audioBlobData; 
       
       // Mount path elements to baseline players
       const activeAudioTrackBlobUrl = URL.createObjectURL(audioBlobData);
@@ -432,6 +534,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (mainPlayIcon) mainPlayIcon.textContent = "play_arrow";
     if (scrubberFill) scrubberFill.style.width = '0%';
+	lastGeneratedFilename = null;
+    successfullyCompiledAudioBlobCache = null;
   }
 
   
