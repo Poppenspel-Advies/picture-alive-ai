@@ -1,6 +1,7 @@
 """Picture Alive AI — Backend V2 (Gemma 4 + Kokoro TTS)."""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from config import CORS_ORIGINS
 from routes import router
 
@@ -20,6 +21,10 @@ app.add_middleware(
 )
 
 app.include_router(router)
+
+# 🎯 THE BACKEND EXPOSURE FIX: Expose your folder as an active web route asset track
+# This maps your local 'outputs' folder to become visible under the URL path prefix "/audio_output
+app.mount("/audio_output", StaticFiles(directory="outputs"), name="audio_output")
 
 
 @app.get("/health")
