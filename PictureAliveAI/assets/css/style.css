@@ -1710,6 +1710,199 @@ div.toast#toast.show {
   color: #666677;
 }
 
+
+/* ==========================================================================
+   🎬 CYBER COMPLETION PANEL DECORATIONS (Place inside style.css)
+   ========================================================================== */
+
+/* 1. Header Glow Elements Setup */
+.hologram-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pulse-radar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #00e5ff; /* Cyan active track indicator */
+  box-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff;
+  animation: radarBlipPulse 1.5s infinite ease-in-out;
+}
+
+.neon-glow-icon {
+  color: #ff007f !important;
+  text-shadow: 0 0 10px rgba(255, 0, 127, 0.8);
+}
+
+/* 2. Centralized Text Narrator Canvas Box Wrapper */
+.cyber-narrator-panel {
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #ff1744; /* Vivid laser red left accent border line */
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 18px 0 22px 0;
+  overflow: hidden;
+}
+
+.narrator-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  color: #00e5ff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.4);
+}
+
+.premium-delivery-text {
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+  color: #d1d1e0 !important;
+  margin: 0 !important;
+}
+
+/* Precise neon inline keyword indicators */
+.highlight-pink {
+  color: #ff007f;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(255, 0, 127, 0.3);
+}
+
+.highlight-cyan {
+  color: #00e5ff;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(0, 229, 255, 0.3);
+}
+
+/* 3. Innovative Equalizer Waveform Visualization Graph */
+.ambient-audio-waveform-mesh {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 24px;
+  margin-top: 14px;
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+}
+
+.cyber-narrator-panel:hover .ambient-audio-waveform-mesh {
+  opacity: 0.85; /* Lights up intensely when user hovers over the block */
+}
+
+.wave-bar {
+  width: 3px;
+  background: linear-gradient(to top, #ff1744, #ff007f);
+  border-radius: 2px;
+  animation: audioWaveBounce 1.2s ease-in-out infinite alternate;
+}
+
+/* Variable speed rhythms mapping for each independent frequency node bar */
+.bar-1 { height: 30%; animation-duration: 0.6s; }
+.bar-2 { height: 65%; animation-duration: 0.9s; }
+.bar-3 { height: 100%; animation-duration: 0.7s; }
+.bar-4 { height: 45%; animation-duration: 0.8s; }
+.bar-5 { height: 80%; animation-duration: 0.5s; }
+
+/* ==========================================================================
+   4. INNOVATIVE BUTTON: Animated Holographic Branding Node
+   ========================================================================== */
+.premium-hologram-btn {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #0d0d13 0%, #161622 100%) !important;
+  border: 1px solid rgba(255, 0, 127, 0.35) !important;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 24px;
+  /* 🎯 THE FIX: Completely blocks mouse clicks, selections, and taps */
+  pointer-events: none; 
+  cursor: default; /* Changes back to a normal arrow pointer instead of a hand */
+  user-select: none; /* Prevents text highlighting when double-clicked */
+  
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+
+}
+
+/* Technical background grid canvas matrix inside the button */
+.btn-grid-mesh {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+  background-size: 8px 8px;
+  pointer-events: none;
+}
+
+/* 🎯 THE INNOVATION: Right-to-Left Shimmering Holographic Light Beam */
+.premium-hologram-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.15), transparent);
+  transform: skewX(-25deg);
+  animation: flowPinkRightToLeft 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.btn-spark-icon {
+  color: #ff007f;
+  font-size: 20px;
+  filter: drop-shadow(0 0 6px #ff007f);
+}
+
+.btn-text-content {
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Interactive State Changes */
+.premium-hologram-btn:hover {
+  transform: none !important;
+  border-color: rgba(255, 0, 127, 0.35) !important;
+  box-shadow: none !important;
+}
+
+.premium-hologram-btn:hover .btn-spark-icon {
+  color: #00e5ff;
+  filter: drop-shadow(0 0 6px #00e5ff);
+  transform: rotate(90deg); /* Smoothly rotates the vector core on hover */
+}
+
+/* ==========================================================================
+   ⚡ SYSTEM ANIMATION KEYFRAMES (Place at the bottom of style.css)
+   ========================================================================== */
+@keyframes radarBlipPulse {
+  0% { transform: scale(0.95); opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.5); }
+  50% { opacity: 1; box-shadow: 0 0 0 6px rgba(0, 229, 255, 0); }
+  100% { transform: scale(0.95); opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+}
+
+@keyframes audioWaveBounce {
+  0% { transform: scaleY(0.2); }
+  100% { transform: scaleY(1); }
+}
+
+
 /* ==========================================================================
    🎥 SLOW CINEMATIC MOTION LOOPS (Keep at the very bottom of style.css)
    ========================================================================== */
