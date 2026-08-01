@@ -20,13 +20,13 @@ Premium cinematic multimodal UI prototype for Picture Alive AI.
 From the repository root:
 
 ```bash
-python -m http.server 8000 --directory PictureAliveAI
+python -m http.server 9000 --directory PictureAliveAI
 ```
 
 Then open:
 
 ```text
-http://127.0.0.1:8000/
+http://127.0.0.1:9000/
 ```
 
 ## Theme
