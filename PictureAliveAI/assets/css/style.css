@@ -1710,6 +1710,135 @@ div.toast#toast.show {
   color: #666677;
 }
 
+/* ==========================================================================
+   🛸 CYBERPUNK MODAL OVERLAY SHEET (Add to your style.css)
+   ========================================================================== */
+.cyber-share-overlay {
+  position: fixed !important;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(4, 4, 6, 0.85) !important; /* Made background overlay a bit darker for better focus */
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  z-index: 2000000 !important;
+  display: none; 
+  align-items: center;
+  justify-content: center;
+}
+
+.cyber-share-modal-box {
+  /* 📐 THE WIDENING FIX: Expanded from 380px to 460px to give content breathing room */
+  width: 460px !important;
+  max-width: 90vw !important;
+  background: linear-gradient(135deg, #09090b 0%, #12121c 100%) !important;
+  border: 1px solid #ff1744 !important;
+  border-radius: 12px !important;
+  padding: 24px 26px !important; /* Increased inner margins */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(255, 23, 68, 0.25) !important;
+  box-sizing: border-box !important;
+  animation: modalScaleIn 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+}
+
+.share-modal-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  padding-bottom: 14px !important;
+  margin-bottom: 20px !important;
+}
+
+.modal-title-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.modal-title-wrap h4 {
+  margin: 0; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; color: #ffffff;
+}
+
+.pulse-cyan-dot {
+  width: 6px !important; 
+  height: 6px !important; 
+  border-radius: 50% !important; 
+  background: #00e5ff !important; 
+  box-shadow: 0 0 8px #00e5ff !important;
+}
+
+.modal-close-cross {
+  background: transparent !important; 
+  border: none !important; 
+  color: #888899 !important; 
+  cursor: pointer !important; 
+  padding: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: color 0.2s !important;
+}
+.modal-close-cross:hover { color: #ff1744 !important; }
+
+/* Grid Option Boxes Matrix */
+.share-grid-matrix {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  justify-content: space-between !important; /* Uniformly distributes spacing between cards */
+  gap: 14px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.share-matrix-node {
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  border-radius: 8px !important;
+  padding: 18px 10px !important; /* Better inner padding vertical scaling */
+  display: flex !important; 
+  flex-direction: column !important; 
+  align-items: center !important; 
+  justify-content: center !important;
+  gap: 10px !important;
+  text-decoration: none !important; 
+  color: #cccccc !important; 
+  cursor: pointer !important; 
+  box-sizing: border-box !important;
+  transition: all 0.25s ease !important;
+  flex: 1 1 30% !important; 
+  width: 31% !important;       /* Balanced ratio distribution */
+  max-width: 33% !important;
+}
+
+/* Precise Icon scaling vectors optimization dimensions */
+.share-matrix-node span.material-symbols-outlined { 
+  font-size: 26px !important; 
+}
+
+.share-matrix-node:hover {
+  background: rgba(255, 23, 68, 0.05) !important; 
+  border-color: #ff007f !important; 
+  color: #ffffff !important;
+  transform: translateY(-3px) !important; 
+  box-shadow: 0 8px 20px rgba(255, 23, 68, 0.2) !important;
+}
+
+.share-matrix-node span { font-size: 28px !important; }
+
+.node-label { 
+  font-size: 11px !important; 
+  font-weight: 700 !important; 
+  white-space: nowrap !important; /* Forces title strings to stay on a single horizontal row */
+  width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important; /* Adds subtle dots (...) if the font scaling becomes tight */
+ }
+
+/* Vivid Icon Matrix Color Channels */
+.icon-green { color: #25d366 !important; filter: drop-shadow(0 0 4px rgba(37, 211, 102, 0.2)); }
+.icon-cyan { color: #00e5ff !important; filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.2)); }
+.icon-white { color: #ffffff !important; filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2)); }
+
+
 
 /* ==========================================================================
    🎬 CYBER COMPLETION PANEL DECORATIONS (Place inside style.css)
@@ -1934,5 +2063,10 @@ div.toast#toast.show {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes modalScaleIn {
+  0% { transform: scale(0.94) translateY(8px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
