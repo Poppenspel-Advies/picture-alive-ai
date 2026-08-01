@@ -6,13 +6,14 @@ MODE_PROMPTS: dict[str, dict[str, str]] = {
     # ────────────────────────────────────────────────────────────
     "education": {
         "vision": (
-            "Provide a rich, accessible visual description for someone who wants to learn from the image. \n"
+            "Provide a rich, accessible visual description for someone who wants to learn from the image., \n"
             "Include: colors, textures, Main subject, Secondary subjects, Background, Foreground, Objects, Environment, \n"
              "depth, mood, visible text, objects., \n"
             "Be warm, clear, and evocative — like a professional faculty audio lesson."
         ),
         "text": (
-            "Explain the image in detail  as a lecture to understand for a student, \n"
+           "Explain the image in detail  as a lecture to understand for a student, where you are in Futuristic smart classroom in the year 2050,, \n" 
+            "holographic learning, AI teacher, students immersed in virtual lessons and providing, \n"
             "it's deep technical concepts with narration of the image in detail along, \n" 
             "with an Audio lesson and generated  5 quiz questions and sample answers with in 1500 words, for Picture Alive AI Lecture, \n" 
             "Convey your response in US English. ,\n\n"
@@ -35,8 +36,9 @@ MODE_PROMPTS: dict[str, dict[str, str]] = {
              "or old or medical patient to understand  the image, with a screen reader narration,, \n" 
              "emotional detections, direction, face recognition and voice guidance of the user,, \n"
               "including explanation of each distance from  each other and every object in the image in cm and feet from the user in detail, \n"
-              "and at end current date, current time, location of the picture, observation of the image, \n"
-              "with in 1500 words for Picture Alive AI Accessibility. Convey your response in US English.,\n\nVisual analysis:\n{analysis}"
+              "and at end location, country of the picture, observation of the image, \n"
+              "with in 1500 words for Picture Alive AI Accessibility. Convey your response in US English.,\n\n"
+              "Visual analysis:\n{analysis}"
         ),
     },
     # ────────────────────────────────────────────────────────────
@@ -52,7 +54,7 @@ MODE_PROMPTS: dict[str, dict[str, str]] = {
             "Explain the image in detail as a tourists' audio guide narration to speak and include, \n"
              "the Landmark recognition, Historical storytelling, Architectural Marvellous, Entry fees, \n"
              "Access of the premises, Cinematic travel Audio, Studio stating and closing narrations with one possible example and at the end, \n" 
-             "the current date, place, weather, country, location details to the user, \n" 
+             "the place, weather, country, location details to the user, \n" 
              "within 1500 words for Picture Alive AI studio narration. Convey your response in US English in audio output.,\n\n"
             "Visual analysis:\n{analysis}"
         ),
