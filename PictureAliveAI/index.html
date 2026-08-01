@@ -387,7 +387,7 @@
                   <small>Save to your device (4K)</small>
                 </span>
               </button>
-              <button class="action-item" data-action="share">
+              <button class="action-item" data-action="share" onclick="launchAppProductionShare(event)">
                 <span class="material-symbols-outlined">share</span>
                 <span>
                   <strong>Share</strong>
@@ -480,6 +480,41 @@
     </div>
 
     <div class="toast" id="toast"></div>
+
+	      
+    <div class="cyber-share-overlay" id="jsShareModalOverlay">
+  <div class="cyber-share-modal-box">
+    <div class="share-modal-head">
+      <div class="modal-title-wrap">
+        <span class="pulse-cyan-dot"></span>
+        <h4>SHARE NETWORK CHANNELS</h4>
+      </div>
+      <button class="modal-close-cross" id="jsCloseShareModalBtn">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    
+    <div class="share-grid-matrix">
+      <!-- Option 1: WhatsApp -->
+      <a href="#" class="share-matrix-node" id="shareNodeWhatsApp" target="_blank">
+        <span class="material-symbols-outlined icon-green">chat</span>
+        <span class="node-label">WhatsApp</span>
+      </a>
+      
+      <!-- Option 2: Twitter / X -->
+      <a href="#" class="share-matrix-node" id="shareNodeTwitter" target="_blank">
+        <span class="material-symbols-outlined icon-white">X</span>
+        <span class="node-label">X / Twitter</span>
+      </a>
+
+      <!-- Option 3: Copy Link -->
+      <button class="share-matrix-node" id="shareNodeCopyLink">
+        <span class="material-symbols-outlined icon-cyan">content_copy</span>
+        <span class="node-label">Copy Link</span>
+      </button>
+    </div>
+  </div>
+</div>
 
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="assets/js/app.js"></script>
