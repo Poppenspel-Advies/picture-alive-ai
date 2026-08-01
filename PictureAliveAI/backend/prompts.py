@@ -79,7 +79,7 @@ MODE_PROMPTS: dict[str, dict[str, str]] = {
             "Product General details, Product Social media captions, Product features, brand Name, \n" 
             "Product impact in real world and practical real world scenarios to use of the product, technology, innovation behind the product,, \n"
             "the cost effectiveness of the product, trademark , potential users, product architecture, current location,, \n" 
-            "date, country, year. The future growth and market potential of the product along with all the details present, \n"
+            "country, year. The future growth and market potential of the product along with all the details present, \n"
             "in the images to the user within 1500 words for Picture Alive AI digital world. Convey your response in US English.,\n\n"
             "Visual analysis:\n{analysis}"
         ),
