@@ -111,6 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const generateBtn = document.getElementById('executeGenerationTrigger');
   const revertBtn = document.getElementById('revertToUploadBtn');
   const storyTextField = document.getElementById('dynamicStoryTextContent');
+
+// 🎯 Target the premium regenerate button using its precise data-action attribute
+  const regenerateBtn = document.querySelector('button.action-item[data-action="regenerate"]');
+  let isUserCustomUploadStaged = false; 	
   
   // 1. Initial State Orchestrator Check (Forces Uploader View On Page Load Natively)
   evaluateActiveViewState();
@@ -147,17 +151,49 @@ document.addEventListener('DOMContentLoaded', () => {
   if (leftPanelDownloadBtn) {
     leftPanelDownloadBtn.onclick = function(event) {
       event.preventDefault();
-      event.stopPropagation(); // Forces mock scripts to drop processing hooks completely
+      event.stopImmediatePropagation();  // Forces mock scripts to drop processing hooks completely
       
       console.log("📥 [Download System]: Initializing instant, non-blocking local memory download extraction...");
 
-      // 🛑 1. Safety Guard Check: Reject if our memory binary cache variable is empty
-      if (!successfullyCompiledAudioBlobCache) {
-        console.error("❌ [Download Aborted]: Memory binary block cache is empty.");
-        if (typeof showToast === 'function') {
-          showToast("No active media generated yet! Please select an image and click 'Generate AI Story' first.");
+       // 🛑 1. SAFETY GUARD CHECK: Reject if no media binary has been compiled yet
+      if (!successfullyCompiledAudioBlobCache || successfullyCompiledAudioBlobCache.size === 0) {
+        console.warn("⚠️ [Download Blocked]: No binary cached in RAM. Firing toast and vocal alert tracks.");
+        
+        const sampleValidationBlockText = "No active media generated yet! Please select an image and click 'Generate AI Story' first.";
+
+        // Clear out any stale text strings inside your active toast system if applicable
+        if (typeof clearAllActiveToasts === 'function') {
+          clearAllActiveToasts();
         }
-        return;
+
+        // Fire your custom warning notice strings
+        if (typeof showToast === 'function') {
+          showToast(sampleValidationBlockText);
+        } else if (typeof triggerPremiumSystemToast === 'function') {
+          triggerPremiumSystemToast(sampleValidationBlockText);
+        } else {
+          alert(sampleValidationBlockText);
+        }
+
+        // 🎯 🆂 THE AUDIO VOICE-OVER ATTACHMENT: Say it out loud natively!
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel(); // Drop any playing vocal buffers to prevent overlaps
+          
+          const warningUtterance = new SpeechSynthesisUtterance("No active media.");
+          const availableSystemVoices = window.speechSynthesis.getVoices();
+          const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+          if (localizedVoiceMatch) {
+            warningUtterance.voice = localizedVoiceMatch;
+          }
+          
+          warningUtterance.rate = 1.05;  // Crisp, professional alert speed
+          warningUtterance.pitch = 1.0;  // Standard neutral informative tone pitch
+          
+          window.speechSynthesis.speak(warningUtterance);
+          console.log("🔊 [Text-To-Speech Alert]: Dispatched warning announcement audio vectors.");
+        }
+        
+        return; // Terminate execution line instantly. No file task is run!
       }
 
       try {
@@ -384,6 +420,212 @@ window.launchAppProductionShare = function(event) {
   }
 };
 
+	  // ==========================================================================
+  // 🔄 Step C: The Refined Smart Regenerate Workflow Click Handler Engine
+  // ==========================================================================
+  if (regenerateBtn) {
+    regenerateBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+       e.stopImmediatePropagation(); 
+
+      console.log("🔄 [Regenerate Loop]: Evaluating environmental data validity...");
+
+		console.log(isUserCustomUploadStaged);
+      // 🎯 THE CRITICAL SECURITY TRACK GUARD: 
+      // Force exit and block if the system detects the image is just a static sample layout asset!
+     if (!isUserCustomUploadStaged) {
+        const sampleValidationBlockText = "Cannot regenerate response for placeholder sample images! Please upload your own custom picture file card asset first.";
+        
+        console.warn("⚠️ [Regenerate Blocked]: Blocked sample image run. Firing strict alert toast.");
+
+        // Clear out any stale text strings inside your active toast system if applicable
+        if (typeof clearAllActiveToasts === 'function') {
+          clearAllActiveToasts();
+        }
+
+        // Fire your custom alert notice strings
+        if (typeof showToast === 'function') {
+          showToast(sampleValidationBlockText);
+        } else if (typeof triggerPremiumSystemToast === 'function') {
+          triggerPremiumSystemToast(sampleValidationBlockText);
+        } else {
+          alert(sampleValidationBlockText);
+        }
+        
+        return; // Terminate execution line instantly. No API call or background toast is fired!
+      }
+
+	 // ==========================================================================
+      // 🟢 SUCCESS PATHWAY: Only reached if a true user-uploaded image is present
+      // ==========================================================================
+      
+      // If your platform fires a success toast, place it safely HERE behind the guard
+      if (typeof showToast === 'function') {
+        showToast("Regeneration started...");
+      }
+
+      // Lock buttons and start hardware accelerated sync symbol rotation animations
+      const syncIconNode = regenerateBtn.querySelector('.material-symbols-outlined');
+      regenerateBtn.disabled = true;
+      regenerateBtn.style.cursor = "wait";
+      if (syncIconNode) syncIconNode.style.animation = "eliteNeonPinkSpin 0.75s linear infinite";
+
+      const fileAsset = fileInput.files[0];
+      executeMultimodalGeneration(fileAsset, activeSelectedMode);
+
+      // Automated teardown bindings once fresh audio files finish assembling
+      if (hiddenAudioNode) {
+        const restoreRegenerateChassisBaseState = () => {
+          regenerateBtn.disabled = false;
+          regenerateBtn.style.cursor = "pointer";
+          if (syncIconNode) syncIconNode.style.animation = "none";
+        };
+        hiddenAudioNode.addEventListener('canplaythrough', restoreRegenerateChassisBaseState, { once: true });
+        setTimeout(restoreRegenerateChassisBaseState, 35000); // Absolute safety timeout protection line
+      }
+    });
+  }
+
+
+// ==========================================================================
+  // 🎨 Step D: Dynamic UI View Rendering State Machine Operators
+  // ==========================================================================
+  
+  function updateStoryPanelToLoadingState() {
+    if (uploaderCard) uploaderCard.style.display = 'none';
+    if (storyWorkspace) {
+      storyWorkspace.style.display = 'block';
+      const storyHeaderTitle = document.querySelector('.story-head h3');
+      if (storyHeaderTitle) { storyHeaderTitle.textContent = "GENERATING..."; storyHeaderTitle.style.color = "#00e5ff"; }
+    }
+  }
+ 
+  
+  // ==========================================================================
+// 🟢 THE COMPONENT FIX: Unified Success State Visual & Audio Realignment
+// ==========================================================================
+function renderStoryPanelSuccessState(mode) {
+  const storyHeaderTitle = document.querySelector('.story-head h3');
+  const metaBadge = document.querySelector('.narrator-meta-badge');
+  const storyTextField = document.getElementById('dynamicStoryTextContent');
+  const audioWaveMesh = document.querySelector('.ambient-audio-waveform-mesh');
+
+  // 🅰️ Update the primary header layout block to a glowing cyan success matrix
+  if (storyHeaderTitle) {
+    storyHeaderTitle.textContent = "GENERATION COMPLETE";
+    storyHeaderTitle.style.color = "#00e5ff";
+    storyHeaderTitle.style.textShadow = "0 0 10px rgba(0, 229, 255, 0.4)";
+  }
+
+  // 🅱️ Unhide and illuminate your energetic cyan streaming status badge
+  if (metaBadge) {
+    metaBadge.style.display = "inline-flex";
+    metaBadge.innerHTML = `<span class="material-symbols-outlined">graphic_eq</span><span>VOICEOVER STREAM READY</span>`;
+    metaBadge.style.borderColor = "rgba(0, 229, 255, 0.25)";
+    metaBadge.style.color = "#00e5ff";
+    metaBadge.style.background = "rgba(0, 229, 255, 0.08)";
+    metaBadge.style.textShadow = "0 0 5px rgba(0, 229, 255, 0.4)";
+  }
+
+  // 🅲 Inject your premium descriptive marketing text panel content strings [google]
+  if (storyTextField) {
+    storyTextField.innerHTML = `Response got generated, it is ready in the main panel for you to listen. Do not forget to <span class="highlight-pink">Download</span> & <span class="highlight-pink">Share</span> it. If you want to get a new audio script track for your same picture, click on the <span class="highlight-cyan">Regenerate</span> button.`;
+    storyTextField.style.color = "#d1d1e0";
+  }
+
+  // 🅳 Make the animated equalizer waveform frequency mesh graph visible [google]
+  if (audioWaveMesh) {
+    audioWaveMesh.style.display = "flex";
+  }
+
+  // 🎯 🆂 THE AUDIO VOICE-OVER ATTACHMENT: Say the success phrase out loud!
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel(); // 💥 Drop any currently playing vocal buffers to prevent overlaps
+    
+    // Instantiate a hardware vocalization controller stream [google]
+    const successUtterance = new SpeechSynthesisUtterance("Response got generated successfully. Preview your response in main screen.");
+    
+    // Select an official high-fidelity localized English voice module configuration [google]
+    const availableSystemVoices = window.speechSynthesis.getVoices();
+    const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+    if (localizedVoiceMatch) {
+      successUtterance.voice = localizedVoiceMatch;
+    }
+    
+    successUtterance.rate = 1.0;   // Standard natural pacing speed [google]
+    successUtterance.pitch = 0.95;  // Premium cinematic narrative tone pitch factor [google]
+    
+    // Dispatch vocal stream natively down to the client machine speakers [google]
+    window.speechSynthesis.speak(successUtterance);
+    console.log("🔊 [Text-To-Speech Success]: Dispatched hardware success announcement audio vectors.");
+  }
+}
+
+
+ // ==========================================================================
+// 🔴 THE COMPONENT FIX: Unified Error State Visual Realignment (Network Fortified)
+// ==========================================================================
+function renderStoryPanelErrorState(errorMessage) {
+  const storyHeaderTitle = document.querySelector('.story-head h3');
+  const metaBadge = document.querySelector('.narrator-meta-badge');
+  const storyTextField = document.getElementById('dynamicStoryTextContent');
+  const audioWaveMesh = document.querySelector('.ambient-audio-waveform-mesh');
+
+  // Convert incoming argument to a clean string format to protect matching checks
+  const normalizedErrorText = String(errorMessage || 'Internal Pipeline Stall');
+
+  console.log(`🚨 [Error Renderer Active]: Compiling visual layouts for error trace -> "${normalizedErrorText}"`);
+
+  // 🅰️ Update the primary header layout block to a glowing red warning matrix
+  if (storyHeaderTitle) {
+    storyHeaderTitle.textContent = "ERROR";
+    storyHeaderTitle.style.color = "#ff1744";
+    storyHeaderTitle.style.textShadow = "0 0 12px #ff1744";
+  }
+
+  // 🅱️ Transform the cyan badge into a matching red error frame track!
+  if (metaBadge) {
+    metaBadge.style.display = "inline-flex";
+    metaBadge.innerHTML = `<span class="material-symbols-outlined" style="color:#ff1744;">gpp_bad</span><span>RESPONSE GENERATION FAILED</span>`;
+    metaBadge.style.borderColor = "rgba(255, 23, 68, 0.35)";
+    metaBadge.style.color = "#ff1744";
+    metaBadge.style.background = "rgba(255, 23, 68, 0.08)";
+    metaBadge.style.textShadow = "0 0 5px rgba(255, 23, 68, 0.4)";
+  }
+
+  // 🅲 THE CRITICAL CONTENT FIX: Enforce your exact requested system diagnostic text string
+  if (storyTextField) {
+    // Forcefully wipe out any cached old success panel text content blocks completely
+    storyTextField.innerHTML = `Response not generated, please try again. If the issue still exists, contact our support team <a href="#" class="cyber-support-anchor-link" style="color:#ff007f; font-weight:700; text-decoration:underline; text-shadow:0 0 6px rgba(255,0,127,0.4);">Support</a>. <br><br><small style="color:rgba(255,255,255,0.25); font-family:monospace; font-size:10px;">Diagnostic code trace parameters: ${normalizedErrorText}</small>`;
+    storyTextField.style.color = "#a2a2b0";
+  }
+
+  // 🅳 Hide the equalizer animation graph track completely since no sound file compiled successfully
+  if (audioWaveMesh) {
+    audioWaveMesh.style.display = "none";
+  }
+
+  // 🎯 THE AUDIO VOICE-OVER ATTACHMENT
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel(); // Drop any currently playing vocal buffers to prevent overlaps
+    
+    // Instantiate a hardware vocalization controller stream
+    const failureUtterance = new SpeechSynthesisUtterance("Response generation failed.");
+    
+    const availableSystemVoices = window.speechSynthesis.getVoices();
+    const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+    if (localizedVoiceMatch) {
+      failureUtterance.voice = localizedVoiceMatch;
+    }
+    
+    failureUtterance.rate = 1.0;  
+    failureUtterance.pitch = 0.95; 
+    
+    window.speechSynthesis.speak(failureUtterance);
+    console.log("🔊 [Text-To-Speech Fallback]: Dispatched hardware exception announcement audio vectors.");
+  }
+}
+
   
   function processSelectedFileAsset(file) {
     // 1. File Type Validation Shield
@@ -477,7 +719,8 @@ window.launchAppProductionShare = function(event) {
         fileInput.value = ""; 
         return;
       }
-      
+
+	  isUserCustomUploadStaged = true; 
       // Lock file into memory placeholder
       targetUploadedFileBlob = selectedFile;
       console.log(`📂 [Asset Staged]: ${selectedFile.name} ready for explicit click generation command.`);
@@ -521,7 +764,8 @@ window.launchAppProductionShare = function(event) {
 // 📡 3. UNIFIED API CALL WITH INTEGRATED LOADING STATES
   function executeMultimodalGeneration(fileAsset, targetMode) {
     console.log("🚀 [API Handshake]: User triggered Generation. Initializing UI loading configurations...");
-    
+
+	  updateStoryPanelToLoadingState();
     // ⏳ STEP A: Enforce Busy Cursor and Loading Indicators globally
     document.body.style.cursor = "wait"; 
     if (generateBtn) {
@@ -588,41 +832,19 @@ window.launchAppProductionShare = function(event) {
         hiddenAudioNode.src = activeAudioTrackBlobUrl;
         hiddenAudioNode.load();
       }
-
-      // 🟢 SUCCESS STATE ROUTINE: Swap panels and show output text dashboard blocks
-      if (uploaderCard) uploaderCard.style.display = 'none';
-      if (storyWorkspace) {
-        storyWorkspace.style.display = 'block';
-        
-        // Populate the response text container dynamically
-        const storyTextField = document.getElementById('dynamicStoryTextContent');
-        if (storyTextField) {
-          storyTextField.textContent = `Multimodal extraction complete for ${targetMode.toUpperCase()} mode. Your high-fidelity synchronized AI voiceover narration guide file is loaded and ready for immediate viewport streaming playback execution.`;
-        }
-      }
+      renderStoryPanelSuccessState(targetMode);
+		
     })
     .catch(err => {
       console.error("❌ [API Processing Failed]:", err);
+		
+      successfullyCompiledAudioBlobCache = null;
+      lastGeneratedFilename = null;
       
-      // 🔴 ERROR STATE ROUTINE: Keep uploader hidden, load story div, and force ERROR layout values
-      if (uploaderCard) uploaderCard.style.display = 'none';
-      if (storyWorkspace) {
-        storyWorkspace.style.display = 'block';
-        
-        // Target structural header and paragraphs to display error details explicitly
-        const storyHeaderTitle = document.querySelector('.story-head h3');
-        if (storyHeaderTitle) {
-          storyHeaderTitle.textContent = "ERROR";
-          storyHeaderTitle.style.color = "#ff1744";
-          storyHeaderTitle.style.textShadow = "0 0 10px #ff1744";
-        }
-        
-        const storyTextField = document.getElementById('dynamicStoryTextContent');
-        if (storyTextField) {
-          storyTextField.textContent = `SYSTEM ERROR DETAILS: ${err.message}. Please check if your FastAPI python backend script is actively running on port 8000 and ensure CORS origins mapping rules permit inbound cross-communication tracks.`;
-          storyTextField.style.color = "#ff8a9f";
-        }
-      }
+       if (hiddenAudioNode) { hiddenAudioNode.src = ""; }
+       const finalErrorStringText = err.message || String(err);
+      renderStoryPanelErrorState(finalErrorStringText);
+      
     })
     .finally(() => {
       // 🛑 STEP B: Complete Processing Lifecycle. Restore default cursor and buttons layout metrics
