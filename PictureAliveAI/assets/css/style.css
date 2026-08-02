@@ -2124,6 +2124,139 @@ div.toast#toast.show {
   transform: rotate(90deg); /* Smoothly rotates the vector core on hover */
 }
 
+
+/* ==========================================================================
+   🛸 CYBERPUNK LAB CONTROLLER: Chromium Chassis & Plasma Laser Outline
+   ========================================================================== */
+.premium-cyber-lab-btn {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  
+  /* 📐 Sizing and Spacing parameters adjustment matrix */
+  min-width: 290px !important;
+  padding: 14px 22px !important;
+  border-radius: 8px !important;
+  
+  /* 🥈 THE BASE SILVER & TRANSPARENT MATRIX CHASSIS */
+  background: linear-gradient(135deg, rgba(210, 215, 225, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+  border: 1px solid rgba(0, 229, 255, 0.25) !important;
+  border-left: 4px solid #00e5ff !important; /* Thick electric cyan indicator bar core */
+  
+  /* Constant high-fidelity ambient halo baseline emissions */
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(0, 229, 255, 0.15),
+    inset 0 0 10px rgba(0, 229, 255, 0.05) !important;
+    
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Technical instrumentation background mesh inside the button chassis plate */
+.lab-chassis-grid {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;
+  background-image: linear-gradient(rgba(255,255,255,0.006) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.006) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+/* 🎯 THE LIGHT GLOWING PANEL ENGINE: Animated neon trace backing element */
+.laser-border-glow {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2;
+  background: linear-gradient(90deg, transparent, rgba(255, 23, 68, 0.15), transparent);
+  transform: translateX(-100%);
+  animation: labLaserSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.lab-btn-content-wrap {
+  display: flex !important; align-items: center !important; gap: 14px !important; position: relative !important; z-index: 3 !important;
+}
+
+/* Electric Cyan Instrumentation Icon */
+.lab-spark-icon {
+  color: #00e5ff !important;
+  font-size: 26px !important;
+  filter: drop-shadow(0 0 6px #00e5ff);
+  transition: transform 0.4s ease, color 0.4s ease !important;
+}
+
+.lab-text-matrix-box {
+  display: flex !important; flex-direction: column !important; align-items: flex-start !important; gap: 2px !important; text-align: left !important;
+}
+
+/* 🥈 THE STATIC LAB INSCRIPTION: Bold Brushed Chromium Text */
+.lab-signature-static-text {
+  font-size: 13.5px !important;
+  font-weight: 900 !important; /* Bold font tracking */
+  letter-spacing: 2px !important;
+  font-family: inherit;
+  color: #e2e8f0 !important; /* Premium metallic silver base */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.15) !important;
+  transition: color 0.3s ease !important;
+}
+
+.lab-sub-metric-text {
+  font-size: 9px !important; font-weight: 700 !important; letter-spacing: 1px !important; color: #718096 !important;
+}
+
+/* 🔴 THE MULTI-ANIMATION TRACK: Breathing Hot Pink Blip Node */
+.pulse-radar-blip-pink {
+  position: absolute !important; right: 18px !important; top: calc(50% - 4px) !important; z-index: 3 !important;
+  width: 8px !important; height: 8px !important; border-radius: 50% !important;
+  background-color: #ff007f !important; /* Neon hot pink dot core */
+  box-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
+  animation: labPinkBlipPulse 1.8s infinite ease-in-out !important;
+}
+
+/* ==========================================================================
+   ⚡ HOVER ACCELERATION INTERRUPTS: Text sharpens while boundaries shift to red/pink
+   ========================================================================== */
+.premium-cyber-lab-btn:hover {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: #ff007f !important; /* Boundary shifts completely to Hot Pink */
+  border-left-color: #ff1744 !important; /* Bar hits high-luminescence Laser Red */
+  
+  box-shadow: 
+    0 8px 25px rgba(0,0,0,0.6),
+    0 0 25px rgba(255, 0, 127, 0.35),
+    inset 0 0 15px rgba(255, 23, 68, 0.15) !important;
+  transform: translateY(-1px) translateX(2px) !important;
+}
+
+.premium-cyber-lab-btn:hover .lab-signature-static-text {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px #00e5ff, 0 0 20px rgba(0,229,255,0.4) !important; /* Lights up with internal Cyan glare */
+}
+
+.premium-cyber-lab-btn:hover .lab-spark-icon {
+  color: #ff007f !important;
+  filter: drop-shadow(0 0 8px #ff007f);
+  transform: rotate(15deg) scale(1.1); /* Interactive micro-rotation animation on click hover */
+}
+
+.premium-cyber-lab-btn:active {
+  transform: translateY(0) scale(0.98) !important;
+  transition: transform 0.05s ease !important;
+}
+
+/* ==========================================================================
+   🎥 HARDWARE-ACCELERATED LAYOUT GRAPHIC ROTATION TIME LOOPS
+   ========================================================================== */
+@keyframes labLaserSweep {
+  0% { transform: translateX(-150%) skewX(-30deg); }
+  50% { transform: translateX(250%) skewX(-30deg); }
+  100% { transform: translateX(250%) skewX(-30deg); }
+}
+
+@keyframes labPinkBlipPulse {
+  0% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.6); }
+  50% { opacity: 1; box-shadow: 0 0 0 8px rgba(255, 0, 127, 0); }
+  100% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0 rgba(255, 0, 127, 0); }
+}
+
 /* ==========================================================================
    ⚡ SYSTEM ANIMATION KEYFRAMES (Place at the bottom of style.css)
    ========================================================================== */
