@@ -1838,6 +1838,115 @@ div.toast#toast.show {
 .icon-cyan { color: #00e5ff !important; filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.2)); }
 .icon-white { color: #ffffff !important; filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2)); }
 
+/* ==========================================================================
+   🔄 THE INNOVATION: Brushed Silver & Laser Cyan Regenerate Deck 
+   ========================================================================== */
+.action-item[data-action="regenerate"] {
+  position: relative !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  
+  /* 🥈 THE BASE FIX: Brushed metallic silver gradient plate with a laser cyan border */
+  background: linear-gradient(135deg, rgba(200, 205, 215, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+  border: 1px solid rgba(0, 229, 255, 0.25) !important;
+  border-left: 3px solid #00e5ff !important; /* Thick electric cyan indicator bar */
+  border-radius: 6px !important;
+  padding: 12px 16px !important;
+  
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* 🥈 The Silver Metallic Sheen Layer Overlay Background */
+.action-item[data-action="regenerate"]::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent) !important;
+  transform: skewX(-25deg) translateX(-100%) !important;
+  transition: transform 0.6s ease !important;
+  pointer-events: none !important;
+}
+
+/* Text and Description Character Visibility Rules */
+.action-item[data-action="regenerate"] strong {
+  color: #e2e8f0 !important; /* Premium silver-white font tracking */
+  text-shadow: 0 0 4px rgba(255,255,255,0.1) !important;
+  transition: color 0.3s ease !important;
+}
+
+.action-item[data-action="regenerate"] small {
+  color: #8a99ad !important; /* Faded steel subtext line */
+  transition: color 0.3s ease !important;
+}
+
+/* Isolated Electric Cyan Icon Glow Matrix */
+.action-item[data-action="regenerate"] .material-symbols-outlined {
+  color: #00e5ff !important;
+  filter: drop-shadow(0 0 6px #00e5ff) !important;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* ==========================================================================
+   ⚡ HOVER LIFECYCLES: Text remains perfectly legible while borders intensify
+   ========================================================================== */
+.action-item[data-action="regenerate"]:not(:disabled):hover {
+  /* 🎯 THE VISIBILITY FIX: The button body does NOT turn into a solid mask. 
+     It brightens into transparent silver-chrome, ensuring dark/light text strings stay fully legible! */
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: #00e5ff !important;
+  box-shadow: 
+    0 0 15px rgba(0, 229, 255, 0.25),
+    inset 0 0 8px rgba(0, 229, 255, 0.1) !important;
+  transform: translateX(2px) !important; /* Soft horizontal instrumentation slide */
+}
+
+/* Trigger the sliding metallic silver reflection across the plate on hover */
+.action-item[data-action="regenerate"]:not(:disabled):hover::before {
+  transform: skewX(-25deg) translateX(200%) !important;
+}
+
+.action-item[data-action="regenerate"]:not(:disabled):hover strong {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ==========================================================================
+   🎯 ACTIVE REGENERATE LIFECYCLE: Glowing Hot Pink Plasma Core Transformation
+   ========================================================================== */
+.action-item[data-action="regenerate"]:disabled {
+  background: rgba(255, 0, 127, 0.02) !important;
+  border-color: rgba(255, 0, 127, 0.2) !important;
+  border-left-color: #ff007f !important; /* Swap the cyan bar cleanly into laser hot pink */
+  opacity: 1 !important; /* Keeps the control deck fully visible during generation tasks */
+}
+
+/* 🎯 THE PINK SPINNING AUDIO CORE ANIMATION IMPACT */
+.action-item[data-action="regenerate"]:disabled .material-symbols-outlined {
+  color: #ff007f !important;
+  /* Multi-layered neon hot pink luminescence radiation field */
+  filter: drop-shadow(0 0 8px #ff007f) drop-shadow(0 0 15px #ff007f) !important;
+  
+  /* 🔄 Continuous high-speed physical rotation loop */
+  animation: eliteNeonPinkSpin 0.75s linear infinite !important;
+}
+
+.action-item[data-action="regenerate"]:disabled strong {
+  color: #ff8a9f !important; /* Soft matching pink accent state title text */
+  text-shadow: 0 0 4px rgba(255, 0, 127, 0.2) !important;
+}
+
+.cyber-support-anchor-link {
+  color: #ff007f !important; 
+  font-weight: 700 !important; 
+  text-decoration: underline !important; 
+  text-shadow: 0 0 6px rgba(255, 0, 127, 0.4) !important;
+  transition: all 0.25s ease-in-out !important;
+}
+
+.cyber-support-anchor-link:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f !important;
+}
 
 
 /* ==========================================================================
@@ -1881,16 +1990,14 @@ div.toast#toast.show {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(0, 229, 255, 0.08);
-  border: 1px solid rgba(0, 229, 255, 0.25);
-  color: #00e5ff;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 1px;
   padding: 4px 8px;
   border-radius: 4px;
   margin-bottom: 12px;
-  text-shadow: 0 0 5px rgba(0, 229, 255, 0.4);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .premium-delivery-text {
@@ -2070,3 +2177,9 @@ div.toast#toast.show {
   100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
+/* 🎥 High-fidelity hardware accelerated graphic rotation keyframe tracking */
+@keyframes eliteNeonPinkSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.12); /* Subtle pulse expansion inside the spin loop */ }
+  100% { transform: rotate(360deg) scale(1); }
+}
