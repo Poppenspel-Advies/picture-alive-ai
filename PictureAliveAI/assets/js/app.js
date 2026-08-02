@@ -626,6 +626,75 @@ function renderStoryPanelErrorState(errorMessage) {
   }
 }
 
+	// ==========================================================================
+// 🔊 PICTURE ALIVE AI LAB WORKSPACE SYSTEM CONTROLLER (With Voice Greeting)
+// ==========================================================================
+window.executeLabWorkspaceWelcome = function(event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  console.log("🛸 [AI Lab Router]: Transitioning layout frameworks back to primary workspace dashboard...");
+
+  // 1. SELECT WORKSPACE OBJECT PANELS
+  const storyWorkspace = document.getElementById('storyOutputStateWorkspace');
+  const uploaderCard = document.getElementById('uploaderStateWorkspace');
+  const hiddenAudioNode = document.getElementById('hiddenPreviewAudio');
+
+  // Clear out old active media parameters to prepare the canvas fresh
+  if (hiddenAudioNode) {
+    hiddenAudioNode.pause();
+    hiddenAudioNode.src = "";
+  }
+
+  // 🔄 Swaps active panel visibility to slide the user back to input screens smoothly
+  if (storyWorkspace) storyWorkspace.style.display = "none";
+  if (uploaderCard) uploaderCard.style.display = "block";
+
+  // 🎯 🆂 THE AUDIO LAB WELCOME FIX: Instruct the browser to speak your exact phrases out loud! [12]
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel(); // 💥 Instantly drop old vocal queues to block overlapping sound traces
+    
+    // 📝 Compile your exact multi-phrase request string
+    const welcomeLabGreetingPhrase = `
+										Welcome to Picture Alive AI LAB
+
+										BEYOND IMAGINATION
+
+										Where Artificial Intelligence Transcends Perception and Every Image Evolves into an Extraordinary Digital Experience.
+
+										Embark upon a revolutionary journey powered by next-generation Multimodal Artificial Intelligence, where static imagery is meticulously transformed into immersive narratives, context-aware intelligence, lifelike voice narration, cinematic storytelling, and profound knowledge discovery.
+
+										Picture Alive AI - Transform a single image into a multidimensional repository of contextual intelligence, historical interpretation - Audio Guide, accessibility assistance, educational exploration, immersive narration, digital product analysis, wildlife recognition, and cinematic storytelling—redefining how humanity perceives, 
+										understands, and interacts with the visual world by empowering every photograph to communicate, educate, inspire, and captivate beyond the boundaries of imagination.
+										`;
+
+    const labUtterance = new SpeechSynthesisUtterance(welcomeLabGreetingPhrase);
+    
+    // Auto-select a high-fidelity natural English voice module from backend hardware
+    const availableSystemVoices = window.speechSynthesis.getVoices();
+    const premiumVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+    if (premiumVoiceMatch) {
+      labUtterance.voice = premiumVoiceMatch;
+    }
+    
+    labUtterance.rate = 0.98;   // Smooth, sophisticated scientific narrative speed profile [12]
+    labUtterance.pitch = 1.0;   // Clean crystal pitch frequencies [12]
+    
+    // Stream parameters down to client machine speaker channels
+    window.speechSynthesis.speak(labUtterance);
+    console.log("🔊 [Lab Voice Engine]: Dispatched hardware workspace welcome sequence announcement vectors.");
+  } else {
+    if (typeof triggerPremiumSystemToast === 'function') {
+      triggerPremiumSystemToast("Returned to Picture Alive AI Lab Workspace.");
+    }
+  }
+};
+
+// Warm up system speech engines on document bootstrap
+if ('speechSynthesis' in window) { window.speechSynthesis.getVoices(); }
+
   
   function processSelectedFileAsset(file) {
     // 1. File Type Validation Shield
