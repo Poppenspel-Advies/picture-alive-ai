@@ -492,7 +492,7 @@ window.launchAppProductionShare = function(event) {
   // ==========================================================================
   
   function updateStoryPanelToLoadingState() {
-    //if (uploaderCard) uploaderCard.style.display = 'none';
+    if (uploaderCard) uploaderCard.style.display = 'none';
     if (storyWorkspace) {
       storyWorkspace.style.display = 'block';
       const storyHeaderTitle = document.querySelector('.story-head h3');
@@ -765,7 +765,7 @@ function renderStoryPanelErrorState(errorMessage) {
   function executeMultimodalGeneration(fileAsset, targetMode) {
     console.log("🚀 [API Handshake]: User triggered Generation. Initializing UI loading configurations...");
 
-	  //updateStoryPanelToLoadingState();
+	  updateStoryPanelToLoadingState();
     // ⏳ STEP A: Enforce Busy Cursor and Loading Indicators globally
     document.body.style.cursor = "wait"; 
     if (generateBtn) {
