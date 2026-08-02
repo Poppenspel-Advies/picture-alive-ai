@@ -267,7 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
 window.launchAppProductionShare = function(event) {
   if (event) {
     event.preventDefault();
-    event.stopPropagation(); // Stops external mock framework interception hooks completely
+    // 🎯 THE PRIORITY SHIELD FIX:
+    // Instantly freezes the event so no external or mock scripts can fire false toasts!
+    event.stopImmediatePropagation();  // Stops external mock framework interception hooks completely
   }
 
   console.log("🛸 [Share System]: Extracting production state properties for social broadcast...");
@@ -282,15 +284,53 @@ window.launchAppProductionShare = function(event) {
   const activeModeToken = (typeof activeSelectedMode !== 'undefined' && activeSelectedMode) ? activeSelectedMode : 'heritage_tourism';
   const runtimeFilenameString = (typeof lastGeneratedFilename !== 'undefined' && lastGeneratedFilename) ? lastGeneratedFilename : '';
 
-  // 🛑 Safety Guard Check: Abort instantly if no backend sound asset has been tracked yet
-  if (!runtimeFilenameString || runtimeFilenameString === "") {
-    if (typeof showToast === 'function') {
-      showToast("No active media generated yet! Please select an image and click 'Generate AI Story' first.");
-    } else {
-      alert("No active media generated yet! Please click 'Generate AI Story' first.");
+  // ==========================================================================
+  // 🛑 SAFETY GUARD CHECK: Abort instantly if no backend sound asset has been tracked yet
+  // ==========================================================================
+  if (!runtimeFilenameString || runtimeFilenameString === "" || !hiddenAudioNode || !hiddenAudioNode.src || hiddenAudioNode.src === "") {
+    console.warn("⚠️ [Share Blocked]: No active media array detected. Firing toast and vocal warning.");
+    
+    const sampleValidationBlockText = "No active media generated yet! Please click 'Generate AI Story' first, nothing to share.";
+
+    // Clear out any stale text strings inside your active toast system if applicable
+    if (typeof clearAllActiveToasts === 'function') {
+      clearAllActiveToasts();
     }
-    return;
+
+    // Forcefully display your custom warning notice strings onto your viewport
+    if (typeof showToast === 'function') {
+      showToast(sampleValidationBlockText);
+    } else if (typeof triggerPremiumSystemToast === 'function') {
+      triggerPremiumSystemToast(sampleValidationBlockText);
+    } else {
+      alert(sampleValidationBlockText);
+    }
+
+    // 🎯 🆂 THE AUDIO VOICE-OVER FIX: Instruct the browser to say the message out loud!
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel(); // 💥 Drop any currently playing vocal buffers to prevent overlaps
+      
+      // Instantiate a hardware vocalization controller stream with your exact requested text
+      const shareWarningUtterance = new SpeechSynthesisUtterance("No active media generated yet! Please click 'Generate AI Story' first, nothing to share.");
+      
+      // Select an official high-fidelity localized English voice module configuration
+      const availableSystemVoices = window.speechSynthesis.getVoices();
+      const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+      if (localizedVoiceMatch) {
+        shareWarningUtterance.voice = localizedVoiceMatch;
+      }
+      
+      shareWarningUtterance.rate = 1.05;  // Modern, crisp professional alert speed
+      shareWarningUtterance.pitch = 0.95; // Premium cinematic warning pitch factor
+      
+      // Dispatch vocal stream natively down to the client machine speakers
+      window.speechSynthesis.speak(shareWarningUtterance);
+      console.log("A.I. Voice Engine: Dispatched hardware share restriction alert audio vectors successfully.");
+    }
+    
+    return; // Terminate execution line instantly. No modal box layout or background toast is fired!
   }
+
 
   try {
     // 🛠️ Step A: Extract the unique text hash token from the file string name dynamically
@@ -430,20 +470,22 @@ window.launchAppProductionShare = function(event) {
 
       console.log("🔄 [Regenerate Loop]: Evaluating environmental data validity...");
 
-		console.log(isUserCustomUploadStaged);
       // 🎯 THE CRITICAL SECURITY TRACK GUARD: 
-      // Force exit and block if the system detects the image is just a static sample layout asset!
-     if (!isUserCustomUploadStaged) {
+      // Force exit and block if the system detects the image is just a static sample layout asset! 
+    // ==========================================================================
+      // 🛑 REGENERATE TRACK GUARD: Block placeholder system sample image runs
+      // ==========================================================================
+      if (!isUserCustomUploadStaged) {
         const sampleValidationBlockText = "Cannot regenerate response for placeholder sample images! Please upload your own custom picture file card asset first.";
         
-        console.warn("⚠️ [Regenerate Blocked]: Blocked sample image run. Firing strict alert toast.");
+        console.warn("⚠️ [Regenerate Blocked]: Blocked sample image run. Firing strict visual and vocal alerts.");
 
         // Clear out any stale text strings inside your active toast system if applicable
         if (typeof clearAllActiveToasts === 'function') {
           clearAllActiveToasts();
         }
 
-        // Fire your custom alert notice strings
+        // 📱 Fire your custom alert notice strings onto your screen layout viewport
         if (typeof showToast === 'function') {
           showToast(sampleValidationBlockText);
         } else if (typeof triggerPremiumSystemToast === 'function') {
@@ -451,9 +493,32 @@ window.launchAppProductionShare = function(event) {
         } else {
           alert(sampleValidationBlockText);
         }
+
+        // 🎯 🆂 THE AUDIO VOICE-OVER FIX: Say the warning phrase out loud! [2]
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel(); // 💥 Drop any currently playing vocal buffers to prevent overlaps
+          
+          // Instantiate a hardware vocalization controller stream with your exact requested warning phrase [12]
+          const regenerateWarningUtterance = new SpeechSynthesisUtterance("Cannot regenerate response for placeholder sample images. Please upload your own custom picture file card asset first.");
+          
+          // Select an official high-fidelity localized English voice module configuration [12]
+          const availableSystemVoices = window.speechSynthesis.getVoices();
+          const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+          if (localizedVoiceMatch) {
+            regenerateWarningUtterance.voice = localizedVoiceMatch;
+          }
+          
+          regenerateWarningUtterance.rate = 1.05;  // Modern, crisp professional alert speed [12]
+          regenerateWarningUtterance.pitch = 0.95; // Premium cinematic warning pitch factor [12]
+          
+          // Dispatch vocal stream natively down to the client machine speakers [12]
+          window.speechSynthesis.speak(regenerateWarningUtterance);
+          console.log("Parametric Voice Output: Dispatched hardware regeneration restriction alert audio vectors successfully.");
+        }
         
-        return; // Terminate execution line instantly. No API call or background toast is fired!
+        return; // Terminate execution line instantly. No API call or background loading spinner is triggered! [2]
       }
+
 
 	 // ==========================================================================
       // 🟢 SUCCESS PATHWAY: Only reached if a true user-uploaded image is present
@@ -1142,18 +1207,98 @@ if ('speechSynthesis' in window) { window.speechSynthesis.getVoices();
       tabs.forEach((btn) => btn.classList.remove('active'));
       tab.classList.add('active');
       const currentMode = tab.dataset.output.toUpperCase();
-		if (currentMode !== "AUDIO") {
-		  showToast(`${currentMode} mode, Upgrade to PRO`);
-		}
+		// ==========================================================================
+      // 🔒 CONTEXT GUARD ROUTINE: Block Pro modes with matching audio feedback
+      // ==========================================================================
+      if (currentMode !== "AUDIO") {
+        // Formats your mode tag text string nicely for public presentation (e.g., "HERITAGE TOURISM")
+        const dynamicModeLabel = currentMode.replace(/_/g, " ").toUpperCase();
+        const proValidationBlockText = `${dynamicModeLabel} mode, Upgrade to PRO`;
+        
+        console.warn(`⚠️ [Feature Blocked]: Restricted access for mode -> "${dynamicModeLabel}". Firing visual and vocal alerts.`);
+
+        // Clear out any stale text strings inside your active toast system if applicable
+        if (typeof clearAllActiveToasts === 'function') {
+          clearAllActiveToasts();
+        }
+
+        // 📱 Fire your custom alert notice strings onto your screen layout viewport
+        if (typeof showToast === 'function') {
+          showToast(proValidationBlockText);
+        } else if (typeof triggerPremiumSystemToast === 'function') {
+          triggerPremiumSystemToast(proValidationBlockText);
+        } else {
+          alert(proValidationBlockText);
+        }
+
+        // 🎯 🆂 THE AUDIO VOICE-OVER ATTACHMENT: Say the warning phrase out loud!
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel(); // 💥 Drop any currently playing vocal buffers to prevent overlaps
+          
+          // Instantiate a hardware vocalization controller stream with your exact requested warning phrase layout
+          const proUpgradeUtterance = new SpeechSynthesisUtterance(`${dynamicModeLabel} mode, Upgrade to Pro.`);
+          
+          // Select an official high-fidelity localized English voice module configuration
+          const availableSystemVoices = window.speechSynthesis.getVoices();
+          const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+          if (localizedVoiceMatch) {
+            proUpgradeUtterance.voice = localizedVoiceMatch;
+          }
+          
+          proUpgradeUtterance.rate = 1.05;  // Modern, crisp professional alert speed profile
+          proUpgradeUtterance.pitch = 0.95; // Premium cinematic warning pitch factor
+          
+          // Dispatch vocal stream natively down to the client machine speakers
+          window.speechSynthesis.speak(proUpgradeUtterance);
+          console.log("Parametric Voice Output: Dispatched hardware premium restriction alert audio vectors successfully.");
+        }
+        
+        return; // Terminate execution line instantly. No API call or background loading spinner is triggered!
+      }
     });
   });
 
   document.querySelectorAll('[data-action]').forEach((button) => {
     button.addEventListener('click', () => {
       const action = button.dataset.action;
-       if ((action && action.toLowerCase() === "convert") || (action && action.toLowerCase() === "edit") ) {
-		  showToast(`${action.charAt(0).toUpperCase() + action.slice(1)}:: Upgrade to PRO`);
-		  }else {
+       // ==========================================================================
+      // 🔒 ACTION INTERCEPTOR MATRIX: Handles Pro Restrictions and Started Metrics
+      // ==========================================================================
+      if (action && (action.toLowerCase() === "convert" || action.toLowerCase() === "edit")) {
+        // Format the action name string cleanly (e.g., "Convert" or "Edit")
+        const capitalizedAction = action.charAt(0).toUpperCase() + action.slice(1);
+        const proActionValidationText = `${capitalizedAction}:: Upgrade to PRO`;
+        
+        console.warn(`⚠️ [Action Blocked]: Restricted tool context -> "${capitalizedAction}". Firing Pro restriction alerts.`);
+
+        // Clear out any stale text strings inside your active toast system if applicable
+        if (typeof clearAllActiveToasts === 'function') {
+          clearAllActiveToasts();
+        }
+
+        // 📱 Display Pro validation toast notification
+        if (typeof showToast === 'function') {
+          showToast(proActionValidationText);
+        } else if (typeof triggerPremiumSystemToast === 'function') {
+          triggerPremiumSystemToast(proActionValidationText);
+        }
+
+        // 🎯 🆂 THE PRO AUDIO VOICE-OVER ATTACHMENT: Say "Upgrade to Pro" out loud!
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel(); // Drop any current vocal streams to block overlaps
+          
+          const proActionUtterance = new SpeechSynthesisUtterance(`${capitalizedAction}. Upgrade to Pro.`);
+          const availableSystemVoices = window.speechSynthesis.getVoices();
+          const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+          if (localizedVoiceMatch) proActionUtterance.voice = localizedVoiceMatch;
+          
+          proActionUtterance.rate = 1.05;
+          proActionUtterance.pitch = 0.95;
+          window.speechSynthesis.speak(proActionUtterance);
+        }
+        
+        return; // Safe exit out of the restricted workflow track
+		  } else {
          showToast(`${action.charAt(0).toUpperCase() + action.slice(1)} started`);
       }
     });
