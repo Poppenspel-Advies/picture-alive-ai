@@ -695,6 +695,53 @@ window.executeLabWorkspaceWelcome = function(event) {
 // Warm up system speech engines on document bootstrap
 if ('speechSynthesis' in window) { window.speechSynthesis.getVoices(); }
 
+
+// ==========================================================================
+// 🔊 PREMIUM UPGRADE CONTROLLER ENGINE (Instant Hardware Vocalization Loop)
+// ==========================================================================
+window.executeProUpgradeSequence = function(event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation(); // Forces internal mock frameworks to drop processing hooks completely
+  }
+
+  console.log("🛸 [AI Workspace Deck]: Pro Upgrade node initialized by client click handler.");
+
+  // Trigger our custom web application system toast notification if available
+  if (typeof triggerPremiumSystemToast === 'function') {
+    triggerPremiumSystemToast("Unlocking Premium Processing Pipelines... Shifting to Pro Mode.");
+  }
+
+  // 🎯 🆂 THE AUDIO VOICE-OVER EXTRACTION: Instruct the browser to say "Upgrade to Pro" out loud!
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel(); // 💥 Instantly drop playing vocal buffers to prevent overlaps
+    
+    // Instantiate a hardware vocalization controller stream
+    const upgradeUtterance = new SpeechSynthesisUtterance("Upgrade to pro.");
+    
+    // Auto-select a high-fidelity natural English voice module configuration from backend architecture
+    const availableSystemVoices = window.speechSynthesis.getVoices();
+    const premiumVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+    if (premiumVoiceMatch) {
+      upgradeUtterance.voice = premiumVoiceMatch;
+    }
+    
+    upgradeUtterance.rate = 1.05;  // Modern, crisp authoritative pacing speed profile
+    upgradeUtterance.pitch = 0.95; // Premium cinematic narrative tone pitch factor
+    
+    // Dispatch vocal stream natively down to the client machine speakers
+    window.speechSynthesis.speak(upgradeUtterance);
+    console.log("A.I. Voice Engine: Dispatched hardware upgrade announcement audio vectors successfully.");
+  } else {
+    console.warn("Speech synthesis interface is restricted or blocked inside this browser environment layout.");
+  }
+};
+
+// Warm up system speech engines on document bootstrap
+if ('speechSynthesis' in window) { window.speechSynthesis.getVoices(); 
+}
+
+
   
   function processSelectedFileAsset(file) {
     // 1. File Type Validation Shield
