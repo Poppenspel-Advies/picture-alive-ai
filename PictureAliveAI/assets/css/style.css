@@ -2212,6 +2212,157 @@ div.toast#toast.show {
 }
 
 /* ==========================================================================
+   🛸 SIDECARD RE-REALIGNMENT: Proportional Flow & Floating Neon Pill
+   ========================================================================== */
+.premium-pro-space-card {
+  position: relative !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  display: flex !important;
+  flex-direction: column !important;
+  
+  /* 📐 Sizing and margin tracking proportions */
+  width: 100% !important;
+  padding: 18px 20px !important;
+  border-radius: 12px !important;
+  margin-bottom: 16px !important;
+  
+  /* Artistic neon pink translucent plate canvas */
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.04) 0%, rgba(255, 23, 68, 0.01) 100%) !important;
+  border: 1px solid rgba(255, 0, 127, 0.25) !important;
+  border-left: 3px solid #ff007f !important; /* Premium hot pink left perimeter bar anchor */
+  
+  box-shadow: 
+    0 4px 15px rgba(0,0,0,0.5),
+    0 0 15px rgba(255, 0, 127, 0.12),
+    inset 0 0 12px rgba(255, 0, 127, 0.04) !important;
+    
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Technical instrumentation background mesh */
+.pro-panel-mesh-grid {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;
+  background-image: linear-gradient(rgba(255, 0, 127, 0.008) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 0, 127, 0.008) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* Continuous horizontal sliding light shimmer */
+.pro-laser-perimeter-glow {
+  content: ""; position: absolute; top: 0; left: -150%; width: 50%; height: 100%; pointer-events: none; z-index: 2;
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 127, 0.15), transparent) !important;
+  transform: skewX(-25deg);
+  animation: proLaserSweep 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+}
+
+/* 📐 Header element alignment layout row wrapper */
+.card-header-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important; /* Uniformly pushes icon to left and button pill to right */
+  width: 100% !important;
+  margin-bottom: 16px !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+/* Left side vector icon glow handling profile */
+.pro-panel-icon {
+  color: #ff007f !important;
+  font-size: 26px !important;
+  filter: drop-shadow(0 0 6px #ff007f) !important;
+}
+
+/* ==========================================================================
+   🎯 THE RE-DESIGN: Integrated High-Contrast Premium Action Button Pill
+   ========================================================================== */
+.pro-action-pill-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  
+  background: #ff007f !important; /* Solid vibrant hot pink baseline */
+  color: #ffffff !important;
+  padding: 4px 10px !important;
+  border-radius: 20px !important; /* Creates smooth organic capsule rounded profiles */
+  
+  box-shadow: 0 0 12px rgba(255, 0, 127, 0.6) !important;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.pro-pill-text-content {
+  font-size: 9px !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+}
+
+.pro-arrow-action {
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 🥈 HIGH-CONTRAST TYPOGRAPHY TEXT BLOCKS (Bypasses parent text fades completely) */
+.pro-static-title {
+  font-size: 12px !important;
+  font-weight: 900 !important; /* Extremely bold title header text */
+  letter-spacing: 1.5px !important;
+  color: #ffffff !important; /* Solid high-contrast stark white text string */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important;
+  margin: 0 0 6px 0 !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.pro-metrics-string {
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  color: #ff8a9f !important; /* Beautiful glowing pastel pink metrics details text */
+  text-shadow: 0 0 4px rgba(255, 0, 127, 0.25) !important;
+  margin: 0 !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+/* ==========================================================================
+   ⚡ HOVER LIFECYCLES: Intensely activates glowing fields on cursor hover
+   ========================================================================== */
+.premium-pro-space-card:hover {
+  background: rgba(255, 0, 127, 0.06) !important;
+  border-color: #ffffff !important;
+  border-left-color: #ff1744 !important;
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.6),
+    0 0 30px rgba(255, 0, 127, 0.4),
+    inset 0 0 15px rgba(255, 0, 127, 0.3) !important;
+  transform: scale(1.02) translateY(-2px) !important;
+}
+
+/* Interactive micro-animations for inner button pill layers on card hover */
+.premium-pro-space-card:hover .pro-action-pill-badge {
+  background: #ffffff !important; /* Swaps capsule colors to solid white on card hover */
+  color: #0d0d13 !important;
+  box-shadow: 0 0 15px #ffffff !important;
+}
+
+.premium-pro-space-card:hover .pro-arrow-action {
+  transform: translateX(3px) scale(1.1) !important; /* Programmatic micro-arrow pull horizontal slide */
+}
+
+.premium-pro-space-card:active {
+  transform: scale(0.98) !important;
+  transition: transform 0.05s ease !important;
+}
+
+@keyframes proLaserSweep {
+  0% { transform: translateX(-150%) skewX(-25deg); }
+  40% { transform: translateX(250%) skewX(-25deg); }
+  100% { transform: translateX(250%) skewX(-25deg); }
+}
+
+
+/* ==========================================================================
    ⚡ HOVER ACCELERATION INTERRUPTS: Text sharpens while boundaries shift to red/pink
    ========================================================================== */
 .premium-cyber-lab-btn:hover {
