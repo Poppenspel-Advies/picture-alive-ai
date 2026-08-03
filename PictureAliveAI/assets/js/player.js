@@ -17,12 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let audioAnimating = false;
   let toastRemovalTimer = null;
 
-  playButton?.addEventListener('click', () => {
-    previewAnimating = !previewAnimating;
-    playButton.classList.toggle('playing', previewAnimating);
-    scrubberFill.style.width = previewAnimating ? '75%' : '45%';
-    showToast(previewAnimating ? 'Preview playing' : 'Preview paused');
-  });
 
   audioPlay?.addEventListener('click', () => {
     audioAnimating = !audioAnimating;
