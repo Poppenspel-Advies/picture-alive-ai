@@ -13,13 +13,14 @@
 ## 🛠️ Technology Stack
 
 ![ComfyUI](https://img.shields.io/badge/ComfyUI-Workflow_UI-6A0DAD?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Hugging Face](https://img.shields.io/badge/Hugging_Face-Open_Source_AI-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
 ![Gemma 4](https://img.shields.io/badge/Gemma_4-Multimodal_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Kokoro-82M](https://img.shields.io/badge/Kokoro--82M-Text--to--Speech-FF6F61?style=for-the-badge&logo=soundcloud&logoColor=white)
-![Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-D22128?style=for-the-badge&logo=apache&logoColor=white)
 ![AMD Radeon](https://img.shields.io/badge/AMD-Radeon-ED1C24?style=for-the-badge&logo=amd&logoColor=white)
 ![ROCm](https://img.shields.io/badge/ROCm-GPU_Acceleration-ED1C24?style=for-the-badge&logo=amd&logoColor=white)
+![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white)
 
 
 ### 🌍 Bringing Images to Life with AI Vision & Smart Narration
@@ -145,6 +146,14 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
+## Picture Alive AI - Architecture Diagram
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/PictureAliveAI_Architecture_Diagram.png" width="80%">
+</p>
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
 ## API Endpoints
 
 | Method | Path | Description |
@@ -169,6 +178,29 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 ## Theme
 
 The design follows the existing premium dark cinematic style with black, silver, and red accents, matching the current UI direction.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, distribute, and build upon this project in accordance with the terms of the MIT License.
+
+Some third-party components used by Picture Alive AI retain their own respective licenses:
+
+| Component | License |
+|-----------|---------|
+| Picture Alive AI | MIT License |
+| Kokoro-82M | Apache License 2.0 |
+| FastAPI | MIT License |
+| Python | PSF License |
+| ComfyUI | GPL-3.0 License |
+| Hugging Face Libraries | Apache License 2.0 |
+| Gemma 4 | Subject to Google's Gemma License Terms |
+
+See the **LICENSE** file for complete details.
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
