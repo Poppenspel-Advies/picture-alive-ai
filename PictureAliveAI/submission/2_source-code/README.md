@@ -30,7 +30,7 @@
 |
 [🎥 Demo  Audio Heritage & Tourism](https://audiomack.com/poppenspeladvies/song/6a6f3abe19f79)
 |
-[⭐ Star Repository](https://github.com/Poppenspel-Advies/picture-alive-ai)
+[⭐ Star Repository](https://github.com/Poppenspel-Advies/picture-alive-ai/tree/main/PictureAliveAI)
 
 </div>
 
@@ -169,5 +169,143 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 ## Theme
 
 The design follows the existing premium dark cinematic style with black, silver, and red accents, matching the current UI direction.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+# 🖼️ Application Showcase
+
+
+## 🏛️ Heritage & Tourism – AI Audio Guide
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_HeritageMain.png" width="70%">
+</p>
+
+Transform every historical landmark, museum, monument, artwork, or cultural heritage site into an immersive AI-powered tour guide.
+
+Picture Alive AI recognizes famous destinations and instantly generates rich historical narratives accompanied by lifelike multilingual audio narration, allowing visitors to explore history through intelligent storytelling.
+
+### ✨ Features
+
+- 🏛️ AI Landmark Recognition
+- 🎧 Interactive AI Audio Guide
+- 🌍 Historical & Cultural Storytelling
+- 📍 GPS-Aware Location Intelligence
+- 🗺️ Local Heritage Information
+- 💰 Visitor Information & Entry Details
+- ♿ Accessibility Narration
+- 🌐 Cinematic Travel 
+- 🎙️ Human-like Voice Narration
+- 📖 Museum & Monument Knowledge Discovery
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+## 🐅 Wildlife Intelligence
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_DigitalMain.png" width="70%">
+</p>
+
+Discover the natural world through intelligent species recognition powered by advanced Computer Vision and Multimodal AI.
+
+Upload a wildlife photograph and Picture Alive AI automatically identifies the species while generating detailed biological, ecological, and conservation insights with immersive AI narration.
+
+### ✨ Features
+
+- 🐅 Species Recognition
+- 🧬 Scientific Name Identification
+- 🌿 Habitat Analysis
+- 🍽️ Food Habit Classification
+- 🦴 Physical Characteristics
+- 🧠 Behaviour Analysis
+- 🌍 Geographic Distribution
+- 📍 Current Location Mapping
+- 📚 Evolution & Origin History
+- 🦜 Species Family Classification
+- 🎧 Wildlife Audio Narration
+- 🌎 Conservation Awareness
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+## ♿ Accessibility Intelligence
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_AccessibilityMain.png" width="70%">
+</p>
+
+Designed with inclusivity at its core, Picture Alive AI empowers individuals with visual impairments, elderly users, and people with accessibility needs by transforming visual content into comprehensive spoken experiences.
+
+Every image becomes an intelligent assistant capable of describing surroundings, identifying objects, reading text, recognizing emotions, and narrating contextual information in natural language.
+
+### ✨ Features
+
+- 👁️ Intelligent Scene Understanding
+- 🗣️ AI-Powered Voice Assistance
+- 🎧 Real-Time Audio Narration
+- 📖 OCR Text Reading
+- 😊 Facial Emotion Recognition
+- 🚶 Environmental Awareness
+- 🪑 Indoor & Outdoor Navigation Support
+- 🚦 Hazard & Obstacle Detection
+- 🏥 Medical Assistance Scenarios
+- 🛒 Everyday Shopping Assistance
+- 🎓 Educational Accessibility
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+# 🌐 Digital World Intelligence
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_Digital4.png" width="70%">
+</p>
+
+Analyze products, engineering systems, industrial equipment, consumer electronics, aerospace hardware, scientific instruments, and innovative technologies using AI-powered product intelligence.
+
+Picture Alive AI transforms complex technical products into simplified knowledge through intelligent analysis, engineering explanations, architecture visualization, and natural voice narration.
+
+### ✨ Features
+
+- 📱 Product Recognition
+- ⚙️ Engineering Analysis
+- 🏭 Industrial Equipment Intelligence
+- 📊 Product Specifications
+- 💡 Innovation Analysis
+- 🏗️ Product Architecture
+- 💰 Cost Effectiveness Analysis
+- 📈 Market Potential Prediction
+- 📢 AI Social Media Content Generation
+- 🎤 AI Product Narration
+- 🚀 Future Technology Insights
+- 🧠 Intelligent Technical Reports
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+# 🎭 Content Creation Studio
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_Content1.png" width="70%">
+</p>
+
+Picture Alive AI transforms static images into cinematic storytelling experiences, immersive podcasts, educational narratives, and creative multimedia content.
+
+Using multimodal AI reasoning, the platform generates emotionally engaging stories, realistic conversations, and professional-quality narration suitable for entertainment, education, marketing, museums, and digital publishing.
+
+### ✨ Features
+
+- 🎬 AI Storytelling
+- 📖 Creative Narrative Generation
+- 🎭 Character Conversations
+- 🎤 Podcast Generation
+- 🎨 Artwork Interpretation
+- 🏰 Historical Reimagination
+- 🎞️ Cinematic Narration
+- 😊 Emotion-Aware Storytelling
+- 📚 Educational Story Creation
+- 🌍 Cultural Storytelling
+- 🔊 Human-like Voice Narration
+- ✨ Creative Content Generation
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------
