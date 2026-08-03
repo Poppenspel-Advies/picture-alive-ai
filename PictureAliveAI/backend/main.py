@@ -1,4 +1,5 @@
 """Picture Alive AI — Backend V2 (Gemma 4 + Kokoro TTS)."""
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -19,6 +20,19 @@ app.add_middleware(
     allow_headers=["*"],
     expose_headers=["Content-Disposition"]
 )
+
+# ==========================================================================
+# 🎯 THE DIRECTORY ENFORCEMENT SHIELD: Dynamic Folder Creation Engine
+# ==========================================================================
+# Look up your absolute local workspace path boundaries safely
+TARGET_OUTPUT_DIR = "outputs"
+
+if not os.path.exists(TARGET_OUTPUT_DIR):
+    print(f"📁 [System Initialization]: Directory '{TARGET_OUTPUT_DIR}' not detected. Instantiating folder mesh on disk...")
+    # Enforce directory creation on your drive partition cleanly with system permission mappings
+    os.makedirs(TARGET_OUTPUT_DIR, exist_ok=True)
+    
+    
 
 app.include_router(router)
 
