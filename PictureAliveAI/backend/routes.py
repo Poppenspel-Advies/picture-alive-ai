@@ -51,7 +51,7 @@ async def _read_image(image: UploadFile) -> bytes:
             break
         total += len(chunk)
         if total > MAX_IMAGE_BYTES:
-            raise HTTPException(413, "Image too large (max 10 MB)")
+            raise HTTPException(413, "Image too large (max 20 MB)")
         chunks.append(chunk)
     return b"".join(chunks)
 
