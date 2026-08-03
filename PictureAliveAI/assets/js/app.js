@@ -111,6 +111,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const generateBtn = document.getElementById('executeGenerationTrigger');
   const revertBtn = document.getElementById('revertToUploadBtn');
   const storyTextField = document.getElementById('dynamicStoryTextContent');
+ 
+   let previewAnimating = false;
+   
+   // ==========================================================================
+// 🧠 INTERNAL MULTIMODAL AI THOUGHT ENGINE (Compact Cyberpunk Fragments)
+// ==========================================================================
+const MULTIMODAL_AI_THOUGHTS_MATRIX = [
+   "“The power of multimodal AI lies not in how it reads pixels, but in how it pieces together the human stories hidden behind them.”",
+  "“Art and technology do not collide here; they synchronize to breathe voice into static canvases, making memory a living medium.”",
+  "“When vision data blends perfectly with synchronized neural speech vectors, data ceases to be cold numbers and becomes pure imagination.”",
+  "“Multimodal comprehension is the bridge that allows modern machines to look at a photograph, understand its soul, and narrate its history.”",
+  "“Every image uploaded is a frozen fragment of time waiting for artificial intelligence to unseal its voice and animate its layout path.”",
+  "“Innovation is the constant translation of silent pixels into high-fidelity audible frequencies that resonate across human experience.”"
+];
 
 // 🎯 Target the premium regenerate button using its precise data-action attribute
   const regenerateBtn = document.querySelector('button.action-item[data-action="regenerate"]');
@@ -556,15 +570,67 @@ window.launchAppProductionShare = function(event) {
   // 🎨 Step D: Dynamic UI View Rendering State Machine Operators
   // ==========================================================================
   
-  function updateStoryPanelToLoadingState() {
-    if (uploaderCard) uploaderCard.style.display = 'none';
-    if (storyWorkspace) {
-      storyWorkspace.style.display = 'block';
-      const storyHeaderTitle = document.querySelector('.story-head h3');
-      if (storyHeaderTitle) { storyHeaderTitle.textContent = "GENERATING..."; storyHeaderTitle.style.color = "#00e5ff"; }
+ function updateStoryPanelToLoadingState() {
+  if (uploaderCard) uploaderCard.style.display = 'none';
+  
+  if (storyWorkspace) {
+    storyWorkspace.style.display = 'block';
+    
+    // 🅰️ Update the primary header layout block to show active calculation state
+    const storyHeaderTitle = document.querySelector('.story-head h3');
+    if (storyHeaderTitle) {
+      storyHeaderTitle.textContent = "GENERATING..."; 
+      storyHeaderTitle.style.color = "#00e5ff"; 
+      storyHeaderTitle.style.textShadow = "0 0 10px rgba(0, 229, 255, 0.4)";
+    }
+
+    // 🎯 Select a random compact quote from the array matrix
+    const randomQuoteIndex = Math.floor(Math.random() * MULTIMODAL_AI_THOUGHTS_MATRIX.length);
+    const selectedThoughtString = MULTIMODAL_AI_THOUGHTS_MATRIX[randomQuoteIndex];
+
+    // 🅲 Inject your exact requested prompt copy loading text layout
+    const storyTextField = document.getElementById('dynamicStoryTextContent');
+    if (storyTextField) {
+      storyTextField.innerHTML = `
+        The response is getting generated. In the meanwhile, read the thought of the day from Picture Alive AI:<br>
+        <span class="highlight-cyan" style="display:block; margin:12px 0; padding:10px 14px; background:rgba(0,229,255,0.04); border-left:2px solid #00e5ff; border-radius:4px; font-style:italic; font-size:12.5px; line-height:1.5;">
+          ${selectedThoughtString}
+        </span>
+        Once your response is ready, you will see on this screen that your response is ready to preview. Preview the response in the main screen.
+      `;
+      storyTextField.style.color = "#d1d1e0";
+    }
+    
+    // ==========================================================================
+    // 🎯 THE BADGE CONTENT OVERWRITE FIX:
+    // Safely forces the inner text elements to display active processing states!
+    // ==========================================================================
+    const metaBadge = document.getElementById('dynamicMetaBadge');
+    const metaIcon = document.getElementById('dynamicMetaIcon');
+    const metaText = document.getElementById('dynamicMetaText');
+
+    if (metaBadge && metaText && metaIcon) {
+      // 🎨 Swap standard text to show active generation progress metrics string
+      metaText.textContent = "RESPONSE GETTING GENERATED...";
+      
+      // Swap properties to neutral loading layouts parameters
+      metaIcon.textContent = "sync"; // Changes equalizer symbol to an interactive sync symbol arrow loop
+      metaIcon.style.animation = "spin 2s linear infinite"; // Forces active hardware acceleration rotation loop
+      
+      metaBadge.style.borderColor = "rgba(255,255,255,0.1)";
+      metaBadge.style.color = "#8a8a9a";
+      metaBadge.style.background = "rgba(255,255,255,0.02)";
+      metaBadge.style.textShadow = "none";
+    }
+
+    // Hide any old active equalizer waveform frequency graphs until data completely returns
+    const audioWaveMesh = document.querySelector('.ambient-audio-waveform-mesh');
+    if (audioWaveMesh) {
+      audioWaveMesh.style.display = "none";
     }
   }
- 
+}
+
   
   // ==========================================================================
 // 🟢 THE COMPONENT FIX: Unified Success State Visual & Audio Realignment
@@ -1041,40 +1107,131 @@ if ('speechSynthesis' in window) { window.speechSynthesis.getVoices();
   }
 
 
-
-  // 4. Integrated Player Controller Logic Loop Hooks (Handles Play/Pause click toggle transformations)
+ // ==========================================================================
+  // 🎮 4. INTEGRATED PLAYER CONTROLLER LOGIC LOOP HOOKS (Standard Play/Pause Click Toggles)
+  // ==========================================================================
   if (playPreviewBtn && hiddenAudioNode) {
     playPreviewBtn.addEventListener('click', (e) => {
       e.preventDefault();
       
-      if (!hiddenAudioNode.src) {
-        if (typeof showToast === 'function') showToast("Please upload an image asset first to compile an active audio guide track.");
+      if (!hiddenAudioNode.src || hiddenAudioNode.src === "" || !isUserCustomUploadStaged ) {
+        if (typeof showToast === 'function') {
+          showToast("Please upload an image asset first to compile an active audio guide track.");
+        }
         return;
+      }
+      
+      // 🎯 THE SCOPING FIX: Replaced broken 'this' with 'playPreviewBtn' inside your arrow function scope
+      const activeIconSpanNode = playPreviewBtn.querySelector('.material-symbols-outlined');
+
+      // Sync the tracking state variables natively with the true media state engine
+      previewAnimating = hiddenAudioNode.paused; 
+      
+      // Clear out any stale text strings inside your active toast system if applicable
+      if (typeof clearAllActiveToasts === 'function') {
+        clearAllActiveToasts();
       }
 
       if (hiddenAudioNode.paused) {
-        hiddenAudioNode.play();
-        mainPlayIcon.textContent = "pause";
-        console.log("🔊 [Media Stream]: Playback stream initiated.");
+        console.log("📡 [Media Event Request]: Dispatched play action call...");
+        
+        // 📈 Trigger on-screen layout progress animations exactly as requested
+        playPreviewBtn.classList.add('playing');
+        if (scrubberFill) scrubberFill.style.width = '75%';
+        
+        // 📱 Fire your custom operational status notification toast string onto your viewport
+        if (typeof showToast === 'function') {
+          showToast('Preview playing');
+        } else if (typeof triggerPremiumSystemToast === 'function') {
+          triggerPremiumSystemToast('Preview playing');
+        }
+
+        // 🎯 🆂 THE AUDIO VOICE-OVER ATTACHMENT: Updated with the clean speech phrase
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel(); // Drop any current vocal streams to block overlaps
+          
+          const playUtterance = new SpeechSynthesisUtterance("Preview playing.");
+          const availableSystemVoices = window.speechSynthesis.getVoices();
+          const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+          if (localizedVoiceMatch) playUtterance.voice = localizedVoiceMatch;
+          
+          playUtterance.rate = 1.05;  // Modern, crisp professional informative speed profile
+          playUtterance.pitch = 1.0;   // Neutral digital confirmation pitch frequency
+          window.speechSynthesis.speak(playUtterance);
+        }
+
+        hiddenAudioNode.play()
+          .then(() => {
+            if (activeIconSpanNode) activeIconSpanNode.textContent = "pause";
+          })
+          .catch(err => console.error("Playback interrupted:", err));
+
       } else {
+        console.log("📡 [Media Event Request]: Dispatched pause action call...");
+        
+        // 📉 Trigger on-screen layout progress animations exactly as requested
+        playPreviewBtn.classList.remove('playing');
+        if (scrubberFill) scrubberFill.style.width = '45%';
+        
+        // 📱 Fire your custom operational status notification toast string onto your viewport
+        if (typeof showToast === 'function') {
+          showToast('Preview paused');
+        } else if (typeof triggerPremiumSystemToast === 'function') {
+          triggerPremiumSystemToast('Preview paused');
+        }
+
+        // 🎯 🆂 THE AUDIO VOICE-OVER ATTACHMENT: Updated with the clean speech phrase
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel(); // Drop any current vocal streams to block overlaps
+          
+          const pauseUtterance = new SpeechSynthesisUtterance("Preview paused.");
+          const availableSystemVoices = window.speechSynthesis.getVoices();
+          const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+          if (localizedVoiceMatch) pauseUtterance.voice = localizedVoiceMatch;
+          
+          pauseUtterance.rate = 1.05;
+          pauseUtterance.pitch = 1.0;
+          window.speechSynthesis.speak(pauseUtterance);
+        }
+
         hiddenAudioNode.pause();
-        mainPlayIcon.textContent = "play_arrow";
-        console.log("⏸️ [Media Stream]: Playback paused.");
+        if (activeIconSpanNode) activeIconSpanNode.textContent = "play_arrow";
       }
     });
+   
+    // ==========================================================================
+    // 🎯 BACKUP STATE LISTENERS: Keeps icons synced if audio ends or clips
+    // ==========================================================================
+    hiddenAudioNode.addEventListener('play', () => {
+      const activeIconSpanNode = playPreviewBtn.querySelector('.material-symbols-outlined');
+      if (activeIconSpanNode) activeIconSpanNode.textContent = "pause";
+      playPreviewBtn.classList.add('playing');
+      previewAnimating = true;
+    });
 
+    hiddenAudioNode.addEventListener('pause', () => {
+      const activeIconSpanNode = playPreviewBtn.querySelector('.material-symbols-outlined');
+      if (activeIconSpanNode) activeIconSpanNode.textContent = "play_arrow";
+      playPreviewBtn.classList.remove('playing');
+      previewAnimating = false;
+    });
+	    
     // 5. Scrubber timeline tracking bar moving update parameters animation loops
     hiddenAudioNode.addEventListener('timeupdate', () => {
-      const currentProgressPosition = (hiddenAudioNode.currentTime / hiddenAudioNode.duration) * 100;
-      if (scrubberFill) {
+      if (hiddenAudioNode.duration && scrubberFill) {
+        const currentProgressPosition = (hiddenAudioNode.currentTime / hiddenAudioNode.duration) * 100;
         scrubberFill.style.width = `${currentProgressPosition}%`;
       }
     });
 
     // Handle audio loop finishing bounds reset triggers cleanly
     hiddenAudioNode.addEventListener('ended', () => {
-      mainPlayIcon.textContent = "play_arrow";
+      const activeIconSpanNode = playPreviewBtn.querySelector('.material-symbols-outlined');
+      if (activeIconSpanNode) activeIconSpanNode.textContent = "play_arrow";
       if (scrubberFill) scrubberFill.style.width = '0%';
+      playPreviewBtn.classList.remove('playing');
+      previewAnimating = false;
+      console.log("🏁 [Media Stream Complete]: UI tracking loops reset.");
     });
   }
 
@@ -1197,7 +1354,54 @@ if ('speechSynthesis' in window) { window.speechSynthesis.getVoices();
     item.addEventListener('click', () => {
       navItems.forEach((nav) => nav.classList.remove('active'));
       item.classList.add('active');
-      showToast(`${item.textContent.trim()} selected`);
+      const labelSpanNode = item.querySelector('span:not(.material-symbols-outlined)');
+      let cleanModeLabelName = "Default";
+      
+      if (labelSpanNode) {
+        cleanModeLabelName = labelSpanNode.textContent.trim().toUpperCase();
+      } else {
+        // Fallback: If no child text span exists, strip out icon strings manually
+        cleanModeLabelName = item.textContent.replace(/[a-z_]+/g, '').trim().toUpperCase();
+      }
+
+      // 🎯 THE PREMIUM TOAST STRINGS CONVENTION FIX:
+      // Formats exactly: "EDUCATION MODE :: Pipeline Activated" or "HERITAGE TOURISM MODE :: Pipeline Activated"
+      const premiumToastMessageText = `${cleanModeLabelName} MODE :: Pipeline Activated`;
+
+      console.log(`📡 [Workspace Navigation Sync]: Switching user interface framework parameters to -> "${cleanModeLabelName}"`);
+
+      // Clear out any stale text strings inside your active toast system if applicable
+      if (typeof clearAllActiveToasts === 'function') {
+        clearAllActiveToasts();
+      }
+
+      // 📱 Display the premium workspace navigation confirmation toast notification
+      if (typeof showToast === 'function') {
+        showToast(premiumToastMessageText);
+      } else if (typeof triggerPremiumSystemToast === 'function') {
+        triggerPremiumSystemToast(premiumToastMessageText);
+      }
+
+      // 🎯 🆂 THE NAVIGATION AUDITORY ATTACHMENT: Say it out loud dynamically!
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // Drop any current vocal streams to block overlaps
+
+        // Compiles smoothly: "Switched to Education mode." or "Switched to Heritage Tourism mode."
+        const beautifullySpokenLabel = cleanModeLabelName.toLowerCase();
+        const navSpokenUtterance = new SpeechSynthesisUtterance(`Switched to ${beautifullySpokenLabel} mode.`);
+        
+        const availableSystemVoices = window.speechSynthesis.getVoices();
+        const localizedVoiceMatch = availableSystemVoices.find(voice => voice.lang.includes('en'));
+        if (localizedVoiceMatch) {
+          navSpokenUtterance.voice = localizedVoiceMatch;
+        }
+        
+        navSpokenUtterance.rate = 1.05;  // Modern, crisp professional informative speed profile
+        navSpokenUtterance.pitch = 1.0;   // Neutral digital confirmation pitch frequency
+        
+        window.speechSynthesis.speak(navSpokenUtterance);
+        console.log(`🔊 [Text-To-Speech Nav Sync]: Dispatched hardware announcement tracks for: "${cleanModeLabelName}"`);
+      }
     });
   });
 
