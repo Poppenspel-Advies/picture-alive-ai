@@ -1,21 +1,124 @@
-# PictureAliveAI
 
-Premium cinematic multimodal UI prototype for Picture Alive AI.
+<div align="center">
+
+# 🖼️ PICTURE ALIVE AI
+### **Beyond Imagination**
+
+### Making the Future Alive with Multimodal AI
 
 <img width="2061" height="763" alt="PICTURE_ALIVE_AI_COVER_IMAGE_RESIZE" src="https://github.com/user-attachments/assets/39aba44f-91ee-4d7a-9104-96ce1dacb392" />
 
+---
 
-## Project structure
+## 🛠️ Technology Stack
 
-- `index.html` — main dashboard layout
-- `assets/css/` — styles, responsive rules, animations
-- `assets/js/` — UI interactions, upload behavior, media player, API mock layer
-- `assets/images/` — generated or reusable images
-- `assets/videos/` — media assets
-- `assets/icons/` — icon assets
-- `assets/fonts/` — font assets
+![ComfyUI](https://img.shields.io/badge/ComfyUI-Workflow_UI-6A0DAD?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Hugging Face](https://img.shields.io/badge/Hugging_Face-Open_Source_AI-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
+![Gemma 4](https://img.shields.io/badge/Gemma_4-Multimodal_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Kokoro-82M](https://img.shields.io/badge/Kokoro--82M-Text--to--Speech-FF6F61?style=for-the-badge&logo=soundcloud&logoColor=white)
+![AMD Radeon](https://img.shields.io/badge/AMD-Radeon-ED1C24?style=for-the-badge&logo=amd&logoColor=white)
+![ROCm](https://img.shields.io/badge/ROCm-GPU_Acceleration-ED1C24?style=for-the-badge&logo=amd&logoColor=white)
+![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white)
 
-## Run locally
+
+### 🌍 Bringing Images to Life with AI Vision & Smart Narration
+
+[🚀 Live Demo](#)
+|
+[📖 Wiki](https://github.com/Poppenspel-Advies/picture-alive-ai/wiki)
+|
+[🎥 Demo  Audio Heritage & Tourism](https://audiomack.com/poppenspeladvies/song/6a6f3abe19f79)
+|
+[⭐ Star Repository](https://github.com/Poppenspel-Advies/picture-alive-ai/tree/main/PictureAliveAI)
+
+</div>
+
+
+## ✨ What is Picture Alive AI?
+
+**Picture Alive AI** is a next-generation **multimodal artificial intelligence platform** that seamlessly transforms static images into immersive, intelligent, and interactive digital experiences. Powered by state-of-the-art AI vision, advanced language models, and natural voice synthesis, the platform transcends traditional image recognition by delivering contextual understanding, rich storytelling, and human-like narration.
+
+Designed for accessibility, education, digital intelligence, cultural preservation, scientific discovery, and enterprise innovation, Picture Alive AI converts every image into a dynamic source of knowledge—bridging the gap between visual perception and intelligent communication.
+
+Whether analyzing wildlife, historical landmarks, consumer products, engineering systems, artworks, medical imagery, or educational content, Picture Alive AI produces comprehensive AI-driven insights accompanied by lifelike voice narration, enabling users to **see beyond the visible and hear beyond the imaginable**.
+
+---
+
+## 🌟 What Picture Alive AI Can Do
+
+Upload any image and Picture Alive AI can intelligently:
+
+- 🧠 **Interpret complex visual scenes** using advanced multimodal AI reasoning.
+- 🔍 **Detect, classify, and recognize objects** with high-confidence computer vision.
+- 🌍 **Identify geographical locations, landmarks, and environments** with contextual awareness.
+- 🐅 **Recognize wildlife and biodiversity**, providing scientific classifications, habitats, conservation status, and behavioral insights.
+- 📱 **Analyze consumer products and engineering systems**, generating intelligent technical summaries, specifications, architecture, and market insights.
+- 📖 **Explain historical, cultural, and scientific significance** through AI-powered knowledge generation.
+- 🎓 **Deliver interactive educational experiences** with curriculum-friendly explanations for learners of all ages.
+- 🔊 **Generate natural, expressive speech** using advanced AI-powered Text-to-Speech technology.
+- 🎧 **Provide immersive AI Audio Guides**, narrating scenes, objects, products, museums, heritage & buildings , landmarks, and educational content with lifelike voice assistance for hands-free exploration.
+- ♿ **Empower visually impaired and elderly users** through detailed scene descriptions, contextual awareness, and accessibility-first narration.
+- 🎬 **Create cinematic AI storytelling experiences**, transforming static imagery into engaging multimedia narratives suitable for education, tourism, digital marketing, museums, and content creation.
+- 💡 **Produce intelligent reports and contextual summaries** for research, innovation, and enterprise decision-making.
+
+---
+
+> **Picture Alive AI — Beyond Imagination**
+>
+> *Where Artificial Intelligence transforms every image into an extraordinary journey of discovery, knowledge, accessibility, and immersive storytelling.*
+>
+> 
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+## 🚀 Installation
+
+This folder contains the complete source code for Picture Alive AI.
+
+### GitHub Repository
+https://github.com/Poppenspel-Advies/picture-alive-ai
+
+### Clone Repository
+
+```bash
+git clone https://github.com/Poppenspel-Advies/picture-alive-ai.git
+```
+
+## Project Structure
+```
+PictureAliveAI/
+├── backend/                  # FastAPI + Gemma 4 + Kokoro TTS
+│   ├── main.py               # FastAPI entry point
+│   ├── config.py             # Config & environment
+│   ├── gemma_client.py       # Gemma 4 vision + text
+│   ├── prompts.py            # Mode prompts
+│   ├── routes.py             # SSE endpoints
+│   ├── requirements.txt      # Dependencies
+│   └── tests/                # Unit tests
+├── asset/                 # confyUI generated UI
+│   ├── css/
+│   |── images/
+|   |── images/
+├── submission/               # Hackathon deliverables
+│   ├── 1_project-profile/
+│   ├── 2_source-code/
+│   ├── 3_demo-video/
+│   └── 4_supplementary/
+└── README.md
+└── index.html
+
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+## How to Run
+
+### Frontend
+
+### Run locally
 
 From the repository root:
 
@@ -28,7 +131,213 @@ Then open:
 ```text
 http://127.0.0.1:9000/
 ```
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+### Backend
+```bash
+
+cd PictureAliveAI/backend
+cp .env.example .env
+# Edit .env and add your GEMINI_API_KEY
+pip install -r requirements.txt
+uvicorn main:app --host 0.0.0.0 --port 8000
+
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+## Picture Alive AI - Architecture Diagram
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/PictureAliveAI_Architecture_Diagram.png" width="80%">
+</p>
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+## API Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | /api/modes/{mode}/analyze | Upload image (JPEG/PNG, max 10MB) -> Gemma 4 SSE stream |
+| POST | /api/audio/generate?text= | Text -> Kokoro-82M WAV audio |
+| POST | /api/modes/{mode}/generate | Upload image (JPEG/PNG, max 10MB) -> Gemma 4 SSE stream -> Text -> Kokoro-82M WAV audio 
+| GET | /health | Health check |
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+## Technology Stack
+
+- **Frontend:** ComfyUI, React, Vite, Tailwind CSS, Typescript 
+- **Backend:** Python 3.12, FastAPI
+- **Vision + Text:** Gemma 4 (gemma-4-26b-a4b-it), via Google AI Studio
+- **Text-to-Speech:** Kokoro-82M (Apache 2.0, local inference)
+- **GPU:** AMD Radeon ROCm acceleration for TTS
+
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 ## Theme
 
 The design follows the existing premium dark cinematic style with black, silver, and red accents, matching the current UI direction.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, distribute, and build upon this project in accordance with the terms of the MIT License.
+
+Some third-party components used by Picture Alive AI retain their own respective licenses:
+
+| Component | License |
+|-----------|---------|
+| Picture Alive AI | MIT License |
+| Kokoro-82M | Apache License 2.0 |
+| FastAPI | MIT License |
+| Python | PSF License |
+| ComfyUI | GPL-3.0 License |
+| Hugging Face Libraries | Apache License 2.0 |
+| Gemma 4 | Subject to Google's Gemma License Terms |
+
+See the **LICENSE** file for complete details.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+# 🖼️ Application Showcase
+
+
+## 🏛️ Heritage & Tourism – AI Audio Guide
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_HeritageMain.png" width="70%">
+</p>
+
+Transform every historical landmark, museum, monument, artwork, or cultural heritage site into an immersive AI-powered tour guide.
+
+Picture Alive AI recognizes famous destinations and instantly generates rich historical narratives accompanied by lifelike multilingual audio narration, allowing visitors to explore history through intelligent storytelling.
+
+### ✨ Features
+
+- 🏛️ AI Landmark Recognition
+- 🎧 Interactive AI Audio Guide
+- 🌍 Historical & Cultural Storytelling
+- 📍 GPS-Aware Location Intelligence
+- 🗺️ Local Heritage Information
+- 💰 Visitor Information & Entry Details
+- ♿ Accessibility Narration
+- 🌐 Cinematic Travel 
+- 🎙️ Human-like Voice Narration
+- 📖 Museum & Monument Knowledge Discovery
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+## 🐅 Wildlife Intelligence
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_DigitalMain.png" width="70%">
+</p>
+
+Discover the natural world through intelligent species recognition powered by advanced Computer Vision and Multimodal AI.
+
+Upload a wildlife photograph and Picture Alive AI automatically identifies the species while generating detailed biological, ecological, and conservation insights with immersive AI narration.
+
+### ✨ Features
+
+- 🐅 Species Recognition
+- 🧬 Scientific Name Identification
+- 🌿 Habitat Analysis
+- 🍽️ Food Habit Classification
+- 🦴 Physical Characteristics
+- 🧠 Behaviour Analysis
+- 🌍 Geographic Distribution
+- 📍 Current Location Mapping
+- 📚 Evolution & Origin History
+- 🦜 Species Family Classification
+- 🎧 Wildlife Audio Narration
+- 🌎 Conservation Awareness
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+## ♿ Accessibility Intelligence
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_AccessibilityMain.png" width="70%">
+</p>
+
+Designed with inclusivity at its core, Picture Alive AI empowers individuals with visual impairments, elderly users, and people with accessibility needs by transforming visual content into comprehensive spoken experiences.
+
+Every image becomes an intelligent assistant capable of describing surroundings, identifying objects, reading text, recognizing emotions, and narrating contextual information in natural language.
+
+### ✨ Features
+
+- 👁️ Intelligent Scene Understanding
+- 🗣️ AI-Powered Voice Assistance
+- 🎧 Real-Time Audio Narration
+- 📖 OCR Text Reading
+- 😊 Facial Emotion Recognition
+- 🚶 Environmental Awareness
+- 🪑 Indoor & Outdoor Navigation Support
+- 🚦 Hazard & Obstacle Detection
+- 🏥 Medical Assistance Scenarios
+- 🛒 Everyday Shopping Assistance
+- 🎓 Educational Accessibility
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+# 🌐 Digital World Intelligence
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_Digital4.png" width="70%">
+</p>
+
+Analyze products, engineering systems, industrial equipment, consumer electronics, aerospace hardware, scientific instruments, and innovative technologies using AI-powered product intelligence.
+
+Picture Alive AI transforms complex technical products into simplified knowledge through intelligent analysis, engineering explanations, architecture visualization, and natural voice narration.
+
+### ✨ Features
+
+- 📱 Product Recognition
+- ⚙️ Engineering Analysis
+- 🏭 Industrial Equipment Intelligence
+- 📊 Product Specifications
+- 💡 Innovation Analysis
+- 🏗️ Product Architecture
+- 💰 Cost Effectiveness Analysis
+- 📈 Market Potential Prediction
+- 📢 AI Social Media Content Generation
+- 🎤 AI Product Narration
+- 🚀 Future Technology Insights
+- 🧠 Intelligent Technical Reports
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+# 🎭 Content Creation Studio
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/pictureAliveAI_Content1.png" width="70%">
+</p>
+
+Picture Alive AI transforms static images into cinematic storytelling experiences, immersive podcasts, educational narratives, and creative multimedia content.
+
+Using multimodal AI reasoning, the platform generates emotionally engaging stories, realistic conversations, and professional-quality narration suitable for entertainment, education, marketing, museums, and digital publishing.
+
+### ✨ Features
+
+- 🎬 AI Storytelling
+- 📖 Creative Narrative Generation
+- 🎭 Character Conversations
+- 🎤 Podcast Generation
+- 🎨 Artwork Interpretation
+- 🏰 Historical Reimagination
+- 🎞️ Cinematic Narration
+- 😊 Emotion-Aware Storytelling
+- 📚 Educational Story Creation
+- 🌍 Cultural Storytelling
+- 🔊 Human-like Voice Narration
+- ✨ Creative Content Generation
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
