@@ -451,7 +451,7 @@ The dashboard has a system define welcome loud message for the user to inform wh
 The navigation provides quick access to every multimodal AI capability.
 
 <p align="center">
-<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20145858.png" width="30%">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20145858.png" width="25%">
 </p>
 
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -618,7 +618,7 @@ The secure AI processing environment displays
 The right sidebar provides productivity tools for generated content.
 
 <p align="center">
-<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20145658.png" width="30%">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20145658.png" width="25%">
 </p>
 
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -640,6 +640,12 @@ These controls allow users to instantly customize AI-generated content.
 ---
 
 # 📑 Creation Details
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20145757.png" width="20%">
+</p>
+
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 Displays
 
