@@ -357,9 +357,9 @@ Using multimodal AI reasoning, the platform generates emotionally engaging stori
 
 # 🖥️ Picture Alive AI — Premium User Interface
 
-Picture Alive AI delivers a **luxury cinematic multimodal AI workspace** that transforms a traditional AI application into an immersive interactive platform.
+Picture Alive AI delivers a **luxury cinematic multimodal AI workspace** that transforms a traditional AI application into an immersive interactive platform. Every validation and action trigger in Picture Alive AI comes with a Toast message and some of them has loud voice  system notification to user - for example for successfully responses, errored out response scenarios with error message, welcome message, pro Upgrade features and some UI Validations too.
 
-Designed with a **black, silver, red, and neon holographic theme**, the interface emphasizes usability, accessibility, and premium user experience while providing real-time AI-generated multimedia outputs.
+Designed with a **black, silver, red, and neon holographic theme**, the interface emphasizes usability, accessibility, and premium user experience while providing real-time AI-generated multimedia outputs. 
 
 ---
 
@@ -388,6 +388,9 @@ The application is organized into three intelligent workspaces.
 # 📸 User Interface Showcase
 
 ## 🏠 Main Dashboard
+
+The dashboard has a system define welcome loud message for the user to inform what is "Picture Alive AI".
+
 
 <p align="center">
 <img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20133945.png" width="95%">
@@ -438,7 +441,7 @@ The application is organized into three intelligent workspaces.
 ## 🤖 AI Generated Response
 
 <p align="center">
-<img src="docs/screenshots/response.png" width="95%">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20185517.png" width="95%">
 </p>
 
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -446,6 +449,13 @@ The application is organized into three intelligent workspaces.
 # 📂 Left Navigation Panel
 
 The navigation provides quick access to every multimodal AI capability.
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20145858.png" width="30%">
+</p>
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
 
 ### 🎓 Education
 
@@ -521,7 +531,13 @@ Generate
 
 # 📤 Image Upload Workspace
 
-The center workspace allows users to upload images using drag-and-drop or the upload button.
+The center workspace allows users to upload images using drag-and-drop or the upload button. Once the image will be uploaded on click of "Generate Response" button the uploaded user image will be shown in main panel view and user will get a message that the response is getting generated and once it will be ready, system has a loud voice to inform user that the "Response got generated successfully" , user can preview the response in main view.
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20134720.png" width="60%">
+</p>
+
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 Supported formats
 
@@ -535,11 +551,18 @@ Maximum upload size
 
 After upload, the image is processed by the multimodal AI engine.
 
----
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 # 🤖 Multimodal Output Panel
 
 Users can generate multiple outputs from a single image.
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20145200.png" width="60%">
+</p>
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
 
 Available modes include
 
@@ -588,11 +611,17 @@ The secure AI processing environment displays
 - Rendering Information
 - Active AI Modules
 
----
+------------------------------------------------------------------------------------------------------------------------------------------
 
 # ⚙️ AI Action Panel
 
 The right sidebar provides productivity tools for generated content.
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20145658.png" width="30%">
+</p>
+
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 Features include
 
