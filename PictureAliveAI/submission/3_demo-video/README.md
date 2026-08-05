@@ -345,3 +345,19 @@ https://www.youtube.com/watch?v=_9gH0ES8FBw
 > **Picture Alive AI — Beyond Imagination**
 
 **See. Hear. Understand. Learn. Create. Share.**
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+### Picture Alive AI Wiki URL - https://github.com/Poppenspel-Advies/picture-alive-ai/wiki
+
+### Picture Alive AI Code Repository GiiHub URL - https://github.com/Poppenspel-Advies/picture-alive-ai
+
+#### Picture Alive AI ReadMe File - https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/README.md
+
+#### Picture Alive AI Sample response from Picture Alive AI - https://audiomack.com/poppenspeladvies/song/6a6f3abe19f79
+
+### Picture Alive AI Submission URL - https://github.com/Poppenspel-Advies/picture-alive-ai/tree/main/PictureAliveAI/submission
+
+### Picture Alive AI Poster & Banner - https://github.com/Poppenspel-Advies/picture-alive-ai/tree/main/PictureAliveAI/submission/4_supplementary
+
+### Picture Alive AI Project Profile Document - https://github.com/Poppenspel-Advies/picture-alive-ai/tree/main/PictureAliveAI/submission/1_project-profile
