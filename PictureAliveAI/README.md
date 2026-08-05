@@ -149,7 +149,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 ## Picture Alive AI - Architecture Diagram
 
 <p align="center">
-<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/PictureAliveAI_Architecture_Diagram.png" width="80%">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/PictureAliveAI_Architecture_Diagram.png" width="90%">
 </p>
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -203,6 +203,14 @@ Some third-party components used by Picture Alive AI retain their own respective
 See the **LICENSE** file for complete details.
 
 -----------------------------------------------------------------------------------------------------------------------------------------
+
+## Picture Alive AI vs. Existing AI Platforms - The Comparative Analysis of Multimodal AI Platforms shown in the picture
+
+<p align="center">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/CompetetiveStudyForPictureAliveAI.png" width="90%">
+</p>
+
+------------------------------------------------------------------------------------------------------------------------------------------
 
 # 🖼️ Application Showcase
 
