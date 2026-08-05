@@ -207,6 +207,23 @@ See the **LICENSE** file for complete details.
 # 🖼️ Application Showcase
 
 
+# 🎬 Picture Alive AI — Product Demonstration
+
+## Watch the Demo
+
+<p align="center">
+
+[![Picture Alive AI Demo](https://img.youtube.com/vi/_9gH0ES8FBw/maxresdefault.jpg)](https://www.youtube.com/watch?v=_9gH0ES8FBw)
+
+### ▶️ https://www.youtube.com/watch?v=_9gH0ES8FBw
+
+</p>
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+# 🖼️ Application Walk Through
+
+
 ## 🏛️ Heritage & Tourism – AI Audio Guide
 
 <p align="center">
