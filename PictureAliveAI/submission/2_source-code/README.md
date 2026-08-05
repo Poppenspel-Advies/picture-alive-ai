@@ -398,7 +398,7 @@ The application is organized into three intelligent workspaces.
 ## 🎓 Education
 
 <p align="center">
-<img src="docs/screenshots/education.png" width="95%">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20135743.png" width="95%">
 </p>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -406,7 +406,7 @@ The application is organized into three intelligent workspaces.
 ## ♿ Accessibility
 
 <p align="center">
-<img src="docs/screenshots/accessibility.png" width="95%">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20141042.png" width="95%">
 </p>
 
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -414,7 +414,7 @@ The application is organized into three intelligent workspaces.
 ## 🏛 Heritage & Tourism
 
 <p align="center">
-<img src="docs/screenshots/heritage.png" width="95%">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20135603.png" width="95%">
 </p>
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -422,7 +422,7 @@ The application is organized into three intelligent workspaces.
 ## 🌐 Digital World
 
 <p align="center">
-<img src="docs/screenshots/digital-world.png" width="95%">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20143201.png" width="95%">
 </p>
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -430,7 +430,7 @@ The application is organized into three intelligent workspaces.
 ## 🎨 Content Creation
 
 <p align="center">
-<img src="docs/screenshots/content-creation.png" width="95%">
+<img src="https://github.com/Poppenspel-Advies/picture-alive-ai/blob/main/PictureAliveAI/assets/images/Screenshot%202026-08-04%20144146.png" width="95%">
 </p>
 
 -----------------------------------------------------------------------------------------------------------------------------------------
